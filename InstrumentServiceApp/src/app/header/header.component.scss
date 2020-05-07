@@ -1,0 +1,52 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$my-app-primary: mat-palette($mat-blue-grey);
+$my-app-accent:  mat-palette($mat-pink, 500, 900, A100);
+$my-app-warn:    mat-palette($mat-deep-orange);
+
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+@include angular-material-theme($my-app-theme);
+
+.alternate-theme {
+  $alternate-primary: mat-palette($mat-light-blue);
+  $alternate-accent:  mat-palette($mat-yellow, 400);
+
+  $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
+
+  @include angular-material-theme($alternate-theme);
+}
+
+mat-toolbar {
+    height: 100px;
+    mat-toolbar-row:nth-child(1) {
+        background-color: #999;
+    }
+
+    mat-toolbar-row:nth-child(2) {
+        background-color: #666;
+    }
+}
+
+form {
+    display: flex;
+    background-color: #fff;
+    input {
+        padding-left: 10px;
+        border: none;
+        outline: none;
+    }
+    button {
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        outline: none;
+    }
+}
+
+
+
+
+
