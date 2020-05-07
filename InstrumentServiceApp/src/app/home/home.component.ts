@@ -14,8 +14,8 @@ export class HomeComponent implements OnInit {
   slideConfig = {
     "slidesToShow": 1,
     "slidesToScroll": 1,
-    "prev": false,
-    "next": false,
+    "prevArrow": false,
+    "nextArrow": false,
     "dots": true,
     "infinite": false
   };
