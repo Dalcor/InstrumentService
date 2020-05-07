@@ -1,0 +1,6 @@
+*.pyc
+__pycache__
+myvenv
+**/__pycache__
+
+sent_emails

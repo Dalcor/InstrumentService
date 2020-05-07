@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 3rd party
+    'rest_framework',
+    # Local
+    'index',
+
 ]
 
 MIDDLEWARE = [
@@ -68,6 +73,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'InstrumentServiceBack.wsgi.application'
+
+
+REST_FRAMEWORK = {
+'DEFAULT_PERMISSION_CLASSES': [
+'rest_framework.permissions.AllowAny',
+]
+}
 
 
 # Database
