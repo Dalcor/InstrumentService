@@ -7,9 +7,15 @@ import { SliderService } from '../../services/slider.service';
 })
 export class HomeComponent implements OnInit {
 
-  title = 'ngSlick';
 
   slides;
+
+  catalogConfig = {
+    "slidesToShow": 8,
+    "slidesToScroll": 4,
+    "dots": false,
+    "infinite": true
+  };
 
   slideConfig = {
     "slidesToShow": 1,
