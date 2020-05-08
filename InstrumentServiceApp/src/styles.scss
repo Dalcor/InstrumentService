@@ -5,7 +5,9 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+*{
+  box-sizing: border-box;
+}
 
 $lt-gray: #ddd;
 $background-dark: #512DA8;
@@ -30,6 +32,16 @@ $divider-color:        #BDBDBD;
     margin: 0 auto;
     padding: 0 19px;
     font-size: 13px;
+}
+
+.slick-prev, .slick-next {
+  background: black;
+}
+
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+  outline: none;
+  background: black;
+  color: white;
 }
 
 .slick-dots li  {

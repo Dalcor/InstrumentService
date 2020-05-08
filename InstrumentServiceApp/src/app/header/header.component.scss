@@ -18,16 +18,36 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
   @include angular-material-theme($alternate-theme);
 }
 
-mat-toolbar {
-    height: 100px;
-    mat-toolbar-row:nth-child(1) {
-        background-color: #999;
-    }
 
-    mat-toolbar-row:nth-child(2) {
-        background-color: #666;
+    .top-header {
+        background-color: #ccc;
+        height: 34px;
+        .content {
+            height: 100%;
+        }
+        .top-header-content {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100%;
+        }
     }
-}
+    .bottom-header {
+        background-color: #666;
+        height: 66px;
+        .content {
+            height: 100%;
+        }
+        .bottom-header-content {
+            display: flex;
+            justify-content: space-between;
+            height: 100%;
+            align-items: center;
+        }
+    }    
+
+
+
 
 form {
     display: flex;
