@@ -1,11 +1,23 @@
-<mat-toolbar fxLayout="column">
-    <mat-toolbar-row fxFlex="34">
-        <span class="flex-spacer"></span>
-        <span>telnum</span>
-    </mat-toolbar-row>
-    <mat-toolbar-row fxFlex="66" class="bottom-header">   
-        <a routerLink="/home" routerLinkActive="active" mat-button> Home</a>
-        <a routerLink="/contacts" routerLinkActive="active" mat-button> Contact</a>
+
+    <div class="top-header">
+        <div class="content">
+            <div class="top-header-content">
+                <div>
+                    ngSubmit
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-header">
+        <div class="content">
+            <div class="bottom-header-content">
+        <div>
+            logo
+        </div>
+        <nav>
+            <a routerLink="/home" routerLinkActive="active" mat-button> Home</a>
+            <a routerLink="/contacts" routerLinkActive="active" mat-button> Contact</a>
+        </nav>
         <span class="flex-spacer"></span>
         <form class="search-form" novalidate [formGroup]="searchForm" (ngSubmit)="onSubmit()">  
             <input formControlName="searchvalue" autocomplete="off" type="text" placeholder="Пошук">
@@ -13,5 +25,7 @@
                 <mat-icon>search</mat-icon>
             </button> 
         </form>
-    </mat-toolbar-row>
-</mat-toolbar>
+        </div>
+        </div>
+    </div>
+
