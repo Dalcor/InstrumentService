@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SliderService } from '../../services/slider.service';
+import * as jquery from 'jquery';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
