@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SliderService } from '../../services/slider.service';
-import * as jquery from 'jquery';
+import { ToolService } from '../../services/tool.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -27,10 +28,17 @@ export class HomeComponent implements OnInit {
     "infinite": false
   };
 
-  constructor(private sliderService: SliderService) { }
+  constructor(private sliderService: SliderService,
+    private toolService: ToolService) { }
 
   ngOnInit(): void {
     this.slides = this.sliderService.getSliderImages();
+
+    this.toolService.getTools().subscribe(data => {
+      console.log(data);
+    });
   }
+
+
 
 }
