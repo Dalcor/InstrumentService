@@ -8,7 +8,7 @@ import { SliderService } from '../../services/slider.service';
 export class HomeComponent implements OnInit {
 
 
-  slides;
+  slides: any;
 
   catalogConfig = {
     "slidesToShow": 8,

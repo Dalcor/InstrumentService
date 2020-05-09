@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('index.urls')),
     # Web App Entry
-    re_path(r'^$', TemplateView.as_view(template_name="src/index.html"), name='index'),
+    re_path(r'^$', TemplateView.as_view(template_name="dist/InstrumentServiceApp/index.html"), name='index'),
 ]

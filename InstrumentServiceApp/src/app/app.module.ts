@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { from } from 'rxjs';
 
 import 'hammerjs';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import 'hammerjs';
     ReactiveFormsModule,
     MatInputModule,
     MatIconModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    HttpClientModule
   ],
   providers: [
     SliderService
