@@ -34,7 +34,7 @@ INSTALLED_APPS = [
 
 ROOT_URLCONF = 'InstrumentServiceBack.urls'
 
-
+STATIC_ROOT = project_root + '/InstrumentServiceBack/STATIC_ROOT'
 STATIC_URL = '/static/'
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',

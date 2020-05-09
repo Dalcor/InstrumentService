@@ -22,7 +22,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { HomeComponent } from './home/home.component';
 import { from } from 'rxjs';
-
+import * as jquery from 'jquery';
 import 'hammerjs';
 
 @NgModule({
