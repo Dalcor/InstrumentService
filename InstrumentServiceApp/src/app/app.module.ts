@@ -21,8 +21,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { HomeComponent } from './home/home.component';
-import { from } from 'rxjs';
-import * as jquery from 'jquery';
 import 'hammerjs';
 import { HttpClientModule } from '@angular/common/http';
 
