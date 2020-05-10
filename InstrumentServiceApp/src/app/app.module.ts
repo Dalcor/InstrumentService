@@ -23,6 +23,8 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { HomeComponent } from './home/home.component';
 import 'hammerjs';
 import { HttpClientModule } from '@angular/common/http';
+import { DetailsComponent } from './details/details.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     ContactsComponent,
-    HomeComponent
+    HomeComponent,
+    DetailsComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

@@ -9,12 +9,16 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class ToolService {
 
-  tool: Tool;
-  private REST_API_SERVER = "http://localhost:8000/api/GetCatalog";
+  private GetCatalog = "http://localhost:8000/api/GetCatalog";
+  private GetDetails = "http://localhost:8000/api/GetInstrumentDetail";
 
   constructor(private http: HttpClient) { }
 
   public getTools() {
-    return this.http.get(this.REST_API_SERVER);
+    return this.http.get(this.GetCatalog);
+  }
+
+  public getToolDetails() {
+    return this.http.get(this.GetDetails);
   }
 }
