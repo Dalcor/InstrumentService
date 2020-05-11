@@ -21,6 +21,7 @@ from InstrumentServiceBack.settings import base as settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('index.urls')),
+    # path('api/', include('index.urls')),
     # Web App Entry
     re_path(r'^$', TemplateView.as_view(template_name="index.html"), name='index'),
 ]

@@ -12,17 +12,24 @@ class InstrumentCatalog(models.Model):
 class InstrumentCatalogDetail(models.Model):
     name = models.CharField(max_length = 50)
     media_path = models.CharField(max_length = 200)
-    instrument = models.ForeignKey(
-        'InstrumentCatalog',
-        on_delete=models.CASCADE,
-    )
 
-    
     def __str__(self):
         return self.name
 
 
 
+class InstrumentCatalogDetailIntermediary(models.Model):
+    instrument = models.ForeignKey(
+        'InstrumentCatalog',
+        on_delete=models.CASCADE,
+    )
+    detail = models.ForeignKey(
+        'InstrumentCatalogDetail',
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.instrument.name + '--' + self.detail.name
 
 class Sliders(models.Model):
     name = models.CharField(max_length = 50)
