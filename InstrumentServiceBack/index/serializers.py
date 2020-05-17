@@ -3,6 +3,7 @@ from .models import InstrumentCatalog, InstrumentCatalogDetail, Sliders, Instrum
 
 
 class InstrumentCatalogSerializer(serializers.ModelSerializer):
+    #   media_path = serializers.HyperlinkedModelSerializer()
     class Meta:
         model = InstrumentCatalog
         fields = ('id', 'name', 'media_path',)
@@ -10,6 +11,7 @@ class InstrumentCatalogSerializer(serializers.ModelSerializer):
 
 class InstrumentCatalogDetailSerializer(serializers.ModelSerializer):
     instruments_id = serializers.SerializerMethodField()
+
     class Meta:
         model = InstrumentCatalogDetail
         fields = ('id', 'name', 'media_path', 'instruments_id', )
@@ -19,10 +21,10 @@ class InstrumentCatalogDetailSerializer(serializers.ModelSerializer):
         queryset = InstrumentCatalogDetailIntermediary.objects.filter(detail = obj.id)
         for query in queryset:
             instruments_id_array.append(query.instrument_id)
-        
+
         return instruments_id_array
 
-
+    #   def get_media_path()
 
 class SlidersSerializer(serializers.ModelSerializer):
     class Meta:
