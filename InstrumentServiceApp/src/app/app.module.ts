@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { SliderService } from '../services/slider.service';
+import { ToolService } from '../services/tool.service';
 
 import { AppComponent } from './app.component';
 
@@ -52,7 +53,8 @@ import { DetailComponent } from './detail/detail.component';
     HttpClientModule
   ],
   providers: [
-    SliderService
+    SliderService,
+    ToolService
   ],
   bootstrap: [AppComponent]
 })

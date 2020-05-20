@@ -35,9 +35,10 @@
     </div>
   </ngx-slick-carousel>
 </div>
-<div class="catalog-items content">
+<div>{{ selectedItem }}</div>
+<div class="catalog-items content" id='catalog'>
   <ng-container *ngFor="let detail of details">
-  <div *ngIf="detail.id==selectedItem" class="item">
+  <div *ngIf="detail.instrument==selectedItem" class="item">
     <div class="item-image">
       <img src="../../assets/images/construction-and-tools.svg" alt="">
     </div>

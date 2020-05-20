@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Tool } from '../shared/tool';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
@@ -20,5 +20,13 @@ export class ToolService {
 
   public getToolDetails() {
     return this.http.get(this.GetDetails);
+  }
+
+  // public changeTool(tool: Tool) {
+  //   return this.selectedId = tool.id;
+  // }
+
+  public changeTool(tool: Tool):Observable<number> {
+    return of(tool.id);
   }
 }
