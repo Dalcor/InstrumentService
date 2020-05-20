@@ -29,128 +29,22 @@
 </div>
 <div class="catalog content">
   <ngx-slick-carousel #slickModal="slick-carousel" [config]="catalogConfig">
-    <div ngxSlickItem class="slide item">
+    <div ngxSlickItem *ngFor="let tool of catalogItems" (click)="onSelect(tool)" class="slide item">
       <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
-    </div>
-    <div ngxSlickItem class="slide item">
-      <div class="item-img"></div>
-      <div><span>lorem ipsum</span></div>
+      <div><span>{{ tool.name }}</span></div>
     </div>
   </ngx-slick-carousel>
 </div>
-<div class="catalog-items content">
-  <div class="item">
+<div>{{ selectedItem }}</div>
+<div class="catalog-items content" id='catalog'>
+  <ng-container *ngFor="let detail of details">
+  <div *ngIf="detail.instrument==selectedItem" class="item">
     <div class="item-image">
       <img src="../../assets/images/construction-and-tools.svg" alt="">
     </div>
-    <div class="price">$433</div>
-    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, culpa.</div>
-    <button class="more">Больше -></button>
+    <div class="price">{{ detail.id }}</div>
+    <div class="description">{{ detail.name }}</div>
+    <button  [routerLink]="['/details', selectedItemName + '-' + detail.name]" class="more">Больше -></button>
   </div>
-  <div class="item">
-    <div class="item-image">
-      <img src="../../assets/images/construction-and-tools.svg" alt="">
-    </div>
-    <div class="price">$433</div>
-    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, culpa.</div>
-    <button class="more">Больше -></button>
-  </div>
-  <div class="item">
-    <div class="item-image">
-      <img src="../../assets/images/construction-and-tools.svg" alt="">
-    </div>
-    <div class="price">$433</div>
-    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, culpa.</div>
-    <button class="more">Больше -></button>
-  </div>
-  <div class="item">
-    <div class="item-image">
-      <img src="../../assets/images/construction-and-tools.svg" alt="">
-    </div>
-    <div class="price">$433</div>
-    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, culpa.</div>
-    <button class="more">Больше -></button>
-  </div>
-  <div class="item">
-    <div class="item-image">
-      <img src="../../assets/images/construction-and-tools.svg" alt="">
-    </div>
-    <div class="price">$433</div>
-    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, culpa.</div>
-    <button class="more">Больше -></button>
-  </div>
-  <div class="item">
-    <div class="item-image">
-      <img src="../../assets/images/construction-and-tools.svg" alt="">
-    </div>
-    <div class="price">$433</div>
-    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, culpa.</div>
-    <button class="more">Больше -></button>
-  </div>
-  <div class="item">
-    <div class="item-image">
-      <img src="../../assets/images/construction-and-tools.svg" alt="">
-    </div>
-    <div class="price">$433</div>
-    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, culpa.</div>
-    <button class="more">Больше -></button>
-  </div>
-  <div class="item">
-    <div class="item-image">
-      <img src="../../assets/images/construction-and-tools.svg" alt="">
-    </div>
-    <div class="price">$433</div>
-    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, culpa.</div>
-    <button class="more">Больше -></button>
-  </div>
-  
+  </ng-container>
 </div>

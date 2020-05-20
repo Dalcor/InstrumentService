@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Tool } from '../shared/tool';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
@@ -9,12 +9,24 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class ToolService {
 
-  tool: Tool;
-  private REST_API_SERVER = "http://localhost:8000/api/GetCatalog";
+  private GetCatalog = "http://localhost:8000/api/GetCatalog";
+  private GetDetails = "http://localhost:8000/api/GetInstrumentDetail";
 
   constructor(private http: HttpClient) { }
 
   public getTools() {
-    return this.http.get(this.REST_API_SERVER);
+    return this.http.get(this.GetCatalog);
+  }
+
+  public getToolDetails() {
+    return this.http.get(this.GetDetails);
+  }
+
+  // public changeTool(tool: Tool) {
+  //   return this.selectedId = tool.id;
+  // }
+
+  public changeTool(tool: Tool):Observable<number> {
+    return of(tool.id);
   }
 }

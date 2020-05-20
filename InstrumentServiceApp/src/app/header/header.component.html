@@ -14,6 +14,14 @@
         <div>
             logo
         </div>
+        <div class="catalog">
+            <button (click)="toggle()">Каталог</button>
+            <div *ngIf="show" class="header-catalog">
+                <ul>
+                    <li *ngFor="let item of catalogItems" (click)="scroll();">{{ item.name }}</li>
+                </ul>
+            </div>
+        </div>
         <nav>
             <a routerLink="/home" routerLinkActive="active" mat-button> Home</a>
             <a routerLink="/contacts" routerLinkActive="active" mat-button> Contact</a>

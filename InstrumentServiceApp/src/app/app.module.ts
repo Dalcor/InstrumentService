@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { SliderService } from '../services/slider.service';
+import { ToolService } from '../services/tool.service';
 
 import { AppComponent } from './app.component';
 
@@ -23,6 +24,8 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { HomeComponent } from './home/home.component';
 import 'hammerjs';
 import { HttpClientModule } from '@angular/common/http';
+import { DetailsComponent } from './details/details.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     ContactsComponent,
-    HomeComponent
+    HomeComponent,
+    DetailsComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    SliderService
+    SliderService,
+    ToolService
   ],
   bootstrap: [AppComponent]
 })
