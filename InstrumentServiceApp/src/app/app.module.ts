@@ -26,6 +26,7 @@ import 'hammerjs';
 import { HttpClientModule } from '@angular/common/http';
 import { DetailsComponent } from './details/details.component';
 import { DetailComponent } from './detail/detail.component';
+import { CatalogComponent } from './catalog/catalog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DetailComponent } from './detail/detail.component';
     ContactsComponent,
     HomeComponent,
     DetailsComponent,
-    DetailComponent
+    DetailComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,

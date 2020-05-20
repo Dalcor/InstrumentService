@@ -18,12 +18,23 @@
             <button (click)="toggle()">Каталог</button>
             <div *ngIf="show" class="header-catalog">
                 <ul>
-                    <li *ngFor="let item of catalogItems" (click)="scroll();">{{ item.name }}</li>
+                    <li *ngFor="let item of catalogItems">
+                       {{ item.id }}
+                       <ul class="toolsItems">
+                        <ng-container *ngFor="let detail of details">
+                            <ng-container *ngFor="let id of detail.instruments_id">
+                            <li *ngIf="id==item.id">
+                                <a href="">{{ detail.name }}</a>
+                            </li>
+                            </ng-container>
+                          </ng-container>
+                       </ul>
+                    </li>
                 </ul>
             </div>
         </div>
         <nav>
-            <a routerLink="/home" routerLinkActive="active" mat-button> Home</a>
+            <a routerLink="/" routerLinkActive="active" mat-button> Home</a>
             <a routerLink="/contacts" routerLinkActive="active" mat-button> Contact</a>
         </nav>
         <span class="flex-spacer"></span>

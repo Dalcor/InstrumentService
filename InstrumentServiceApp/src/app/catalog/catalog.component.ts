@@ -1,0 +1,50 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { SliderService } from '../../services/slider.service';
+import { ToolService } from '../../services/tool.service';
+import { Tool } from '../../shared/tool';
+
+@Component({
+  selector: 'app-catalog',
+  templateUrl: './catalog.component.html',
+  styleUrls: ['./catalog.component.scss']
+})
+export class CatalogComponent implements OnInit {
+
+  @Input() tool: Tool;
+ 
+  selectedItem: number = 1; 
+  catalogItems: any;
+  selectedItemName: any;
+  details: any;
+  slides: any;
+
+
+  catalogConfig = {
+    "slidesToShow": 8,
+    "slidesToScroll": 4,
+    "dots": false,
+    "infinite": true
+  };
+
+  constructor(private sliderService: SliderService,
+    private toolService: ToolService) { }
+
+  ngOnInit(): void {
+    this.toolService.getTools().subscribe(data => {
+      this.catalogItems = data;
+      this.selectedItemName = this.catalogItems[0].name.replace(' ', '-');
+    });
+
+    this.toolService.getToolDetails().subscribe(data => {
+      this.details = data;
+    }); 
+  }
+
+
+
+  onSelect(tool: Tool) {
+    this.selectedItem = tool.id;
+    this.selectedItemName = tool.name;
+  }
+}
+

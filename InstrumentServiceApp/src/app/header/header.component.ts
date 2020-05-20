@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   searchForm: FormGroup;
   catalogItems: any;
   show: boolean = false;
+  details: any;
 
   constructor(private fb: FormBuilder,
     private toolService: ToolService) {
@@ -33,6 +34,9 @@ export class HeaderComponent implements OnInit {
     this.toolService.getTools().subscribe(data => {
       this.catalogItems = data;
     });
+    this.toolService.getToolDetails().subscribe(data => {
+      this.details = data;
+    }); 
   }
 
   onSubmit() {

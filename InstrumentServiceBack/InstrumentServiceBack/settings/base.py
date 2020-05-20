@@ -1,5 +1,7 @@
 import environ
+import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 project_root = environ.Path(__file__) - 4
 print(project_root)
 env = environ.Env(DEBUG=(bool, False),)
@@ -34,9 +36,12 @@ INSTALLED_APPS = [
 
 
 ROOT_URLCONF = 'InstrumentServiceBack.urls'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_ROOT = project_root + '/InstrumentServiceBack/STATIC_ROOT'
+STATIC_ROOT = os.path.join(BASE_DIR, 'STATIC_ROOT')
+
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -57,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.media',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
