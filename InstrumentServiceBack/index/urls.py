@@ -1,9 +1,11 @@
-from django.urls import path
-from .views import InstrumentCatalogList,InstrumentCatalogDetailList, SlidersList, InstrumentCatalogDetailIntermediaryList
+from django.urls import path, re_path
+# from .views import InstrumentCatalogList,InstrumentCatalogDetailList, SlidersList, InstrumentCatalogDetailIntermediaryList
+from .views import *
 urlpatterns = [
 # path('<int:pk>/', DetailTodo.as_view()),
 path('GetCatalog', InstrumentCatalogList.as_view()),
 path('GetInstrumentDetail', InstrumentCatalogDetailList.as_view()),
 path('GetSliders', SlidersList.as_view()),
-path('test', InstrumentCatalogDetailIntermediaryList.as_view())
+re_path('(?P<instrument>.+)/(?P<detail>.+)', ToolsList.as_view())
+
 ]
