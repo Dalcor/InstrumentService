@@ -24,7 +24,7 @@ export class DetailComponent implements OnInit {
     this.vendor = window.location.href.replace(baseURL, '')
     .split('/')[2].replace('%20', ' ').replace('-', ' ');
     this.toolService.getTool(this.detail, this.tool, this.vendor)
-    .subscribe(item => {this.item = item; console.log(this.item)});
+    .subscribe(item => {this.item = item[0]; console.log(this.item)});
   }
 
 }

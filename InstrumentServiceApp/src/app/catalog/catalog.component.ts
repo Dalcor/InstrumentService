@@ -21,9 +21,9 @@ export class CatalogComponent implements OnInit {
 
   catalogConfig = {
     "slidesToShow": 8,
-    "slidesToScroll": 4,
+    "slidesToScroll": 8,
     "dots": false,
-    "infinite": true
+    "infinite": false
   };
 
   constructor(private sliderService: SliderService,
