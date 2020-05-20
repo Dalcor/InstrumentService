@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import InstrumentCatalog, InstrumentCatalogDetail, Sliders
-from .serializers import InstrumentCatalogSerializer, InstrumentCatalogDetailSerializer, SlidersSerializer, InstrumentCatalogDetailIntermediary, InstrumentCatalogDetailIntermediarySerializer
+from .models import InstrumentCatalog, InstrumentCatalogDetail, Sliders, Tools
+from .serializers import *
 
 
 class InstrumentCatalogList(generics.ListAPIView):
@@ -22,3 +22,13 @@ class InstrumentCatalogDetailIntermediaryList(generics.ListAPIView):
 class SlidersList(generics.ListAPIView):
     queryset = Sliders.objects.all()
     serializer_class = SlidersSerializer
+
+
+class ToolsList(generics.ListAPIView):
+    serializer_class = ToolsSerializer
+
+    def get_queryset(self):
+        instrument = InstrumentCatalog.objects.get(name = self.kwargs['instrument'])
+        detail = InstrumentCatalogDetail.objects.get(name = self.kwargs['detail'])
+        queryset = Tools.objects.filter(instrument = instrument, detail = detail)
+        return queryset
