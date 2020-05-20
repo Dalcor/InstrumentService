@@ -50,7 +50,9 @@ class ToolsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tools
         fields = ('name','vendor_code', 'price', 'wholesale_var', 'media_path',
+
             'amount', 'instrument', 'detail', 'description', 'company')
+
 
 
     # def get_lineup_name(self, obj):
