@@ -40,17 +40,18 @@ class InstrumentCatalogDetailIntermediarySerializer(serializers.ModelSerializer)
 
 
 class ToolsSerializer(serializers.ModelSerializer):
-    lineup = serializers.SerializerMethodField()
+    # lineup = serializers.SerializerMethodField()
 
-    def get_lineup(self, obj):
-
-        queryset = ToolsLineup.objects.filter(tool = obj.id)
-        return {key: value.company for queryset, value.lineup in queryset if key == value.company}
+    # def get_lineup(self, obj):
+    #
+    #     queryset = ToolsLineup.objects.filter(tool = obj.id)
+    #     return {key: value.company for queryset, value.lineup in queryset if key == value.company}
 
     class Meta:
         model = Tools
-        fields = ('name','vendor_code', 'price', 'wholesale_var', 'media_path',
-            'amount', 'instrument', 'detail', 'description', 'company', 'lineup')
+        fields = ('id','name','vendor_code', 'price', 'wholesale_var', 'media_path',
+            'amount', 'instrument', 'detail', 'description', 'company')
+
 
 
     # def get_lineup_name(self, obj):
