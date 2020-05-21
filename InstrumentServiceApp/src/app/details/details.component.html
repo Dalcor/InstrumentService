@@ -1,3 +1,32 @@
-<p>{{ detail }}</p>
-<p>{{ tool }}</p>
-<a *ngFor="let item of categoryTools" routerLink="{{ item.vendor_code }}"> {{item.name}} </a>
+<div class="details-container content">
+    <div class="bread-crumbs">
+        <ul>
+            <li>
+                <a routerLink="">Главная</a>
+            </li>
+        </ul>
+    </div>
+    <div class="details-content">
+        <div class="filter">
+            <h2>Фільтр</h2>
+            <label for=""><input type="checkbox">Makita</label>
+        </div>
+        <div class="details">
+            <div *ngFor="let item of categoryTools" class="item">
+                <img src="../../assets/images/construction-and-tools.svg" alt="">
+                <div class="price"><span>{{ item.price }}</span></div>
+                <a routerLink="{{ item.vendor_code }}" class="name">{{ item.name }}</a>
+                <form action="">
+                    <div class="amount">
+                    
+                    <button type="button" (click)="removeOne($event)">-</button>
+                    <input readonly class="amountField" name="amountField" type="number" max="100" min="1" value="1">
+                    <button type="button" (click)="addOne($event)">+</button>
+                
+                    </div>
+                    <button class="submit" type="submit">Submit</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>

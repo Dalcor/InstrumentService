@@ -1,2 +1,23 @@
-<p>{{ item.name }}</p>
+<div *ngIf="item">
+    <div>{{ item.name }}</div>
+    <div>$ {{ item.price }}</div>
+
+</div>
+<div class="tool-container content">
+    <div class="bread-crumbs">
+        <ul>
+            <li>
+                <a routerLink="">Главная</a>
+            </li>
+            <li>
+                <a routerLink="">anchor</a>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="item" class="tool">
+            <div>{{ item.name }}</div>
+            <div>$ {{ item.price }}</div>
+    </div>
+</div>
+
 

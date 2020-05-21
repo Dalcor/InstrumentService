@@ -113,3 +113,34 @@ $divider-color:        #BDBDBD;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
+
+.wrapper {
+  display: flex;
+flex-direction: column;
+min-height: 100%;
+}
+
+.all {
+flex: 1 0 auto;
+}
+
+footer {
+  flex: 0 0 auto;
+}
+
+.bread-crumbs {
+  ul {
+      display: flex;
+      justify-content: flex-start;
+      list-style: none;
+      li {
+        margin-right: 10px;
+        :after {
+          content: ' > '
+        }
+          a{
+              color: black;
+          }
+      }
+  }
+}

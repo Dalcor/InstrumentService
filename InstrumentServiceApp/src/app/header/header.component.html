@@ -19,12 +19,12 @@
             <div *ngIf="show" class="header-catalog">
                 <ul>
                     <li *ngFor="let item of catalogItems">
-                       {{ item.id }}
+                       {{ item.name }}
                        <ul class="toolsItems">
                         <ng-container *ngFor="let detail of details">
                             <ng-container *ngFor="let id of detail.instruments_id">
                             <li *ngIf="id==item.id">
-                                <a href="">{{ detail.name }}</a>
+                                <a [routerLink]="[item.name , detail.name ]" (click)="hideCatalog()">{{ detail.name }}</a>
                             </li>
                             </ng-container>
                           </ng-container>
@@ -34,8 +34,8 @@
             </div>
         </div>
         <nav>
-            <a routerLink="/" routerLinkActive="active" mat-button> Home</a>
-            <a routerLink="/contacts" routerLinkActive="active" mat-button> Contact</a>
+            <a routerLink="/" routerLinkActive="active" mat-button (click)="hideCatalog()"> Home</a>
+            <a routerLink="/contacts" routerLinkActive="active" mat-button (click)="hideCatalog()"> Contact</a>
         </nav>
         <span class="flex-spacer"></span>
         <form class="search-form" novalidate [formGroup]="searchForm" (ngSubmit)="onSubmit()">  

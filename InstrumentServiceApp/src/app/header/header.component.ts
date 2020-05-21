@@ -48,11 +48,8 @@ export class HeaderComponent implements OnInit {
     console.log(this.show);
   }
 
-  scroll() {
-    document.querySelector('#catalog').scrollIntoView({
-      behavior: "smooth"
-    });
-
+  hideCatalog() {
+    this.show = false;
   }
 
 } 

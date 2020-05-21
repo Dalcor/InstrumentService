@@ -30,11 +30,8 @@ export class ToolService {
   }
 
   public getTool(instrument, tool, vendor) {
-    return this.http.get(this.GetCategoryTools + "/" + instrument +"/" + tool + '/' + vendor);
+    return this.http.get(this.GetCategoryTools + "/" + instrument +"/" + tool + "?vendor_code=" + vendor);
   }
-  // public changeTool(tool: Tool) {
-  //   return this.selectedId = tool.id;
-  // }
 
   public changeTool(tool: Tool):Observable<number> {
     return of(tool.id);

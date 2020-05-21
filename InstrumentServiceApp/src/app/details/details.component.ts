@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Tool } from 'src/shared/tool';
 import { ToolService } from 'src/services/tool.service';
 import { baseURL } from '../../shared/baseurl';
-
+import { Params, ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-details',
@@ -13,18 +15,30 @@ export class DetailsComponent implements OnInit {
   tool: string;
   detail: string;
   categoryTools: any;
-  
-  constructor(private toolService: ToolService) { }
+
+  constructor(private toolService: ToolService,
+    private activateRoute: ActivatedRoute) {
+     }
+  id: number;
 
   ngOnInit(): void {
-    this.detail = window.location.href.replace(baseURL, '')
-    .split('/')[0].replace('%20', ' ').replace('-', ' ');
-    this.tool = window.location.href.replace(baseURL, '')
-    .split('/')[1].replace('%20', ' ').replace('-', ' ');
-    this.toolService.getCategoryTools(this.detail, this.tool)
-    .subscribe(items => {this.categoryTools = items; console.log(this.categoryTools)});
-    
+    this.activateRoute.params.pipe(switchMap((params: Params) => {return this.toolService.getCategoryTools(params['tool'],params['detail'])}))
+    .subscribe(items => {this.categoryTools = items;});
   }
 
+  removeOne(ev) {
+    console.log(ev.target.nextElementSibling);
+    if(ev.target.nextElementSibling.value > 1) {
+      ev.target.nextElementSibling.value -= 1;
+    }
+  }
 
+  addOne(ev) {
+    console.log(ev.target.previousElementSibling);
+    if(ev.target.previousElementSibling.value < 100) {
+      ev.target.previousElementSibling.value = +ev.target.previousElementSibling.value + 1;
+    }
+  }
+
+  
 }
