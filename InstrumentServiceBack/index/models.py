@@ -1,21 +1,31 @@
 from django.db import models
+import re
 
 # Create your models here.
 class InstrumentCatalog(models.Model):
     name = models.CharField(max_length = 50)
-    media_path = models.ImageField(upload_to = 'CatalogImg/', max_length = 200)
+    name_link = models.CharField(max_length = 50, blank = True)
+    media_path = models.FileField(upload_to = 'CatalogImg/', max_length = 200)
 
     def __str__(self):
         return self.name
 
+
+    def save(self, *args, **kwargs):
+        self.name_link = re.sub(r"\s+", '-', self.name)
+        super().save(*args, **kwargs)
 
 class InstrumentCatalogDetail(models.Model):
     name = models.CharField(max_length = 50)
-    media_path = models.ImageField(upload_to = 'CatalogImg/' ,max_length = 200)
+    name_link =  models.CharField(max_length = 50, blank = True)
+    media_path = models.FileField(upload_to = 'CatalogImg/' ,max_length = 200)
 
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.name_link = re.sub(r"\s+", '-', self.name  )
+        super().save(*args, **kwargs)
 
 
 class InstrumentCatalogDetailIntermediary(models.Model):
@@ -75,4 +85,4 @@ class ToolsLineup(models.Model):
     lineup = models.ForeignKey('Lineup', on_delete = models.CASCADE)
 
     def __str__(self):
-        return str(self.tool) + ' -- ' + str(self.lineup)    
+        return str(self.tool) + ' -- ' + str(self.lineup)
