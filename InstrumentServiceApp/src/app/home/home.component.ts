@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Output } from '@angular/core';
 import { SliderService } from '../../services/slider.service';
 import { ToolService } from '../../services/tool.service';
+import { Tool } from '../../shared/tool';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,16 @@ import { ToolService } from '../../services/tool.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-
+  
+//TODO change types of files
+  @Input() tool: Tool;
+ 
+  selectedItem: number = 1; 
+  catalogItems: any;
+  selectedItemName: any;
+  details: any;
   slides: any;
+
 
   catalogConfig = {
     "slidesToShow": 8,
@@ -35,10 +43,20 @@ export class HomeComponent implements OnInit {
     this.slides = this.sliderService.getSliderImages();
 
     this.toolService.getTools().subscribe(data => {
-      console.log(data);
+      this.catalogItems = data;
+      this.selectedItemName = this.catalogItems[0].name;
     });
+
+    this.toolService.getToolDetails().subscribe(data => {
+      this.details = data;
+    }); 
   }
 
 
+
+  onSelect(tool: Tool) {
+    this.selectedItem = tool.id;
+    this.selectedItemName = tool.name;
+  }
 
 }

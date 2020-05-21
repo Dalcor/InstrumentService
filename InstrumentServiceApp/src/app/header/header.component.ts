@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ControlContainer } from '@angular/forms';
+import { ToolService } from '../../services/tool.service';
+import { Tool } from '../../shared/tool';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +10,17 @@ import { FormBuilder, FormGroup, Validators, ControlContainer } from '@angular/f
 })
 export class HeaderComponent implements OnInit {
 
-  searchForm: FormGroup;
+  @Input() selectedItem: number;
+ 
 
-  constructor(private fb: FormBuilder) {
+
+  searchForm: FormGroup;
+  catalogItems: any;
+  show: boolean = false;
+  details: any;
+
+  constructor(private fb: FormBuilder,
+    private toolService: ToolService) {
     this.createForm();
    }
 
@@ -21,9 +31,28 @@ export class HeaderComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.toolService.getTools().subscribe(data => {
+      this.catalogItems = data;
+    });
+    this.toolService.getToolDetails().subscribe(data => {
+      this.details = data;
+    }); 
   }
 
   onSubmit() {
     console.log(this.searchForm.value.searchvalue);
   }
-}
+
+  toggle() {
+    this.show = !this.show;
+    console.log(this.show);
+  }
+
+  scroll() {
+    document.querySelector('#catalog').scrollIntoView({
+      behavior: "smooth"
+    });
+
+  }
+
+} 
