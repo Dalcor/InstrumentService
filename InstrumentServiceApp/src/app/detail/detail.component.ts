@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToolService } from '../../services/tool.service';
 import { baseURL } from '../../shared/baseurl';
+import { Params, ActivatedRoute} from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-detail',
@@ -14,17 +16,14 @@ export class DetailComponent implements OnInit {
   detail: string;
   item: any;
 
-  constructor(private toolService: ToolService) { }
+  constructor(private toolService: ToolService,
+    private activateRoute: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
-    this.detail = window.location.href.replace(baseURL, '')
-    .split('/')[0].replace('%20', ' ').replace('-', ' ');
-    this.tool = window.location.href.replace(baseURL, '')
-    .split('/')[1].replace('%20', ' ').replace('-', ' ');
-    this.vendor = window.location.href.replace(baseURL, '')
-    .split('/')[2].replace('%20', ' ').replace('-', ' ');
-    this.toolService.getTool(this.detail, this.tool, this.vendor)
-    .subscribe(item => {this.item = item[0]; console.log(this.item)});
+    this.activateRoute.params.pipe(switchMap((params: Params) => {return this.toolService.getTool(params['tool'],params['detail'], params['vendor'])}))
+    .subscribe(item => {this.item = item[0];});
   }
 
+  
 }
