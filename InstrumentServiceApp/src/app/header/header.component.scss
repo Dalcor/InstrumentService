@@ -1,5 +1,7 @@
-    .top-header {
-        background-color: #ccc;
+@import '../../variables.scss';
+  
+  .top-header {
+        background-color: $primary-black;
         height: 34px;
         .content {
             height: 100%;
@@ -12,7 +14,7 @@
         }
     }
     .bottom-header {
-        background-color: #666;
+        background-color: $primary-yellow;
         height: 66px;
         .content {
             height: 100%;

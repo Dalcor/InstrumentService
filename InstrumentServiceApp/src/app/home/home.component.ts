@@ -58,5 +58,4 @@ export class HomeComponent implements OnInit {
     this.selectedItem = tool.id;
     this.selectedItemName = tool.name;
   }
-
 }

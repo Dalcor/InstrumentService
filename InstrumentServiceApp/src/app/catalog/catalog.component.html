@@ -13,7 +13,6 @@
   <div class="catalog-items content" id='catalog'>
     <ng-container *ngFor="let detail of details">
     <ng-container *ngFor="let id of detail.instruments_id">
-    <span>{{ id }}</span>
     <div *ngIf="id==selectedItem" class="item">
       <div class="item-image">
         <img src="../../assets/images/construction-and-tools.svg" alt="">
