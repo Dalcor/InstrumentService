@@ -15,6 +15,18 @@
             </div>
             <div>{{ item.name }}</div>
             <div>$ {{ item.price }}</div>
+            <form action="">
+                <div class="amount">
+                
+                <button class="desc" type="button" (click)="removeOne($event)">-</button>
+                    <input type="text" (paste)="onPaste($event)" (keypress)="onInput($event)" maxlength="3" value="1">
+                <button class="asc" type="button" (click)="addOne($event)">+</button>
+            
+                </div>
+                <div class="submit" >
+                    <button type="button" (click)="toCart(item.vendor_code, amount)">В кошик</button>
+                </div>
+            </form>
     </div>
 </div>
 

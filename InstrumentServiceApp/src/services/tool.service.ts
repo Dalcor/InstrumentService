@@ -21,6 +21,12 @@ export class ToolService {
     // .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
+  public getCartItems(vendorArray) {
+    console.log(vendorArray);
+    return this.http.post(baseApiURL + "/GetCartItems", vendorArray);
+
+  }
+
   public getToolDetails() {
     return this.http.get(this.GetDetails);
   }

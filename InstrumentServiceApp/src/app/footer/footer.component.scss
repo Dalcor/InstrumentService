@@ -1,0 +1,13 @@
+@import '../../variables.scss';
+
+div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    background-color: $primary-black;
+}
+
+span {
+    color: #FFFFFF;
+}

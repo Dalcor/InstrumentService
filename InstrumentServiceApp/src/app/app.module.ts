@@ -13,6 +13,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { SliderService } from '../services/slider.service';
 import { ToolService } from '../services/tool.service';
+import { CookieService } from 'ngx-cookie-service';
+import { CartService } from '../services/cart.service';
 
 import { AppComponent } from './app.component';
 
@@ -27,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DetailsComponent } from './details/details.component';
 import { DetailComponent } from './detail/detail.component';
 import { CatalogComponent } from './catalog/catalog.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { CatalogComponent } from './catalog/catalog.component';
     HomeComponent,
     DetailsComponent,
     DetailComponent,
-    CatalogComponent
+    CatalogComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,9 @@ import { CatalogComponent } from './catalog/catalog.component';
   ],
   providers: [
     SliderService,
-    ToolService
+    ToolService,
+    CookieService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })
