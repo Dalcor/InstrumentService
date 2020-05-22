@@ -4,7 +4,10 @@
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+   overflow-y: scroll;
+}
 *{
   box-sizing: border-box;
 }
@@ -20,6 +23,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin: 0 auto;
     padding: 0 19px;
     font-size: 13px;
+}
+
+.catalog .slick-list {
+  padding: 20px 0;
+  margin: 0 -2px;  
 }
 
 .slick-prev, .slick-next {

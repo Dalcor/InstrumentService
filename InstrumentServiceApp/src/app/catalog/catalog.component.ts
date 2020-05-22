@@ -42,7 +42,12 @@ export class CatalogComponent implements OnInit {
 
 
 
-  onSelect(tool: Tool) {
+  onSelect(tool: Tool, ev) {
+    let allItems = document.getElementsByClassName('item');
+    Array.prototype.forEach.call(allItems, function(item, index){
+      item.classList.remove('active');
+    });
+    ev.target.classList.add('active');
     this.selectedItem = tool.id;
     this.selectedItemName = tool.name;
   }

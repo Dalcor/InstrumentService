@@ -3,13 +3,19 @@
   </div>
   <div class="catalog content">
     <ngx-slick-carousel #slickModal="slick-carousel" [config]="catalogConfig">
-      <div ngxSlickItem  *ngFor="let tool of catalogItems" (click)="onSelect(tool)" class="slide item">
-            <div class="item-img"></div>
-            <div><span>{{ tool.name }}</span></div>
-      </div>
+      <ng-container *ngFor="let tool of catalogItems">
+        <div ngxSlickItem *ngIf="tool.id == catalogItems[0].id" (click)="onSelect(tool, $event)" class="slide item active">
+          <div class="item-img"></div>
+          <div><span>{{ tool.name }}</span></div>
+        </div>
+        <div ngxSlickItem *ngIf="tool.id != catalogItems[0].id" (click)="onSelect(tool, $event)" class="slide item">
+          <div class="item-img"></div>
+          <div><span>{{ tool.name }}</span></div>
+        </div>
+      </ng-container>
+      
     </ngx-slick-carousel>
   </div>
-  <div>{{ selectedItem }}</div>
   <div class="catalog-items content" id='catalog'>
     <ng-container *ngFor="let detail of details">
     <ng-container *ngFor="let id of detail.instruments_id">
