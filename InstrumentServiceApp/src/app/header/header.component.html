@@ -19,7 +19,7 @@
             <div *ngIf="show" class="header-catalog">
                 <ul>
                     <li *ngFor="let item of catalogItems">
-                       {{ item.name }}
+                       <div class="tool-name">{{ item.name }}</div>  
                        <ul class="toolsItems">
                         <ng-container *ngFor="let detail of details">
                             <ng-container *ngFor="let id of detail.instruments_id">
@@ -30,6 +30,7 @@
                           </ng-container>
                        </ul>
                     </li>
+                    
                 </ul>
             </div>
         </div>

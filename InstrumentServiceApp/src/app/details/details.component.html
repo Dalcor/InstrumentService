@@ -12,7 +12,7 @@
             <label for=""><input type="checkbox">Makita</label>
         </div>
         <div class="details">
-            <div *ngFor="let item of categoryTools" class="item">
+            <div *ngFor="let item of categoryTools | paginate: { itemsPerPage: 9, currentPage: p}" class="item">
                 <a routerLink="{{ item.vendor_code }}">
                 <img src="../../assets/images/construction-and-tools.svg" alt="">
                 <div class="price"><span>{{ item.price }}</span></div>
@@ -30,6 +30,7 @@
                     </div>
                   </form>
             </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
     </div>
 </div>

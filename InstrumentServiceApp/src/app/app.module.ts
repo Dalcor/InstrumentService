@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { SliderService } from '../services/slider.service';
@@ -56,7 +58,8 @@ import { CartComponent } from './cart/cart.component';
     MatInputModule,
     MatIconModule,
     SlickCarouselModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [
     SliderService,

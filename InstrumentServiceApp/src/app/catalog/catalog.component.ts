@@ -12,7 +12,7 @@ export class CatalogComponent implements OnInit {
 
   @Input() tool: Tool;
  
-  selectedItem: number = 1; 
+  selectedItem: number; 
   catalogItems: any;
   selectedItemName: any;
   details: any;
@@ -32,6 +32,7 @@ export class CatalogComponent implements OnInit {
   ngOnInit(): void {
     this.toolService.getTools().subscribe(data => {
       this.catalogItems = data;
+      this.selectedItem = this.catalogItems[0].id;
       this.selectedItemName = this.catalogItems[0].name.replace(' ', '-');
     });
 
