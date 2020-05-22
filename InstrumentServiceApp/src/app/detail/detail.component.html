@@ -1,8 +1,3 @@
-<div *ngIf="item">
-    <div>{{ item.name }}</div>
-    <div>$ {{ item.price }}</div>
-
-</div>
 <div class="tool-container content">
     <div class="bread-crumbs">
         <ul>
@@ -15,6 +10,9 @@
         </ul>
     </div>
     <div *ngIf="item" class="tool">
+            <div class="tool-image">
+                <img src="../../assets/images/construction-and-tools.svg" alt="">
+            </div>
             <div>{{ item.name }}</div>
             <div>$ {{ item.price }}</div>
     </div>

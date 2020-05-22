@@ -15,7 +15,9 @@ export class DetailsComponent implements OnInit {
   tool: string;
   detail: string;
   categoryTools: any;
-
+  allowedRegExp: RegExp = /^[0-9]+$/;
+  allowedCharRegExp: RegExp = /[0-9]/;
+  newValue: any;
   constructor(private toolService: ToolService,
     private activateRoute: ActivatedRoute) {
      }
@@ -27,17 +29,28 @@ export class DetailsComponent implements OnInit {
   }
 
   removeOne(ev) {
-    console.log(ev.target.nextElementSibling);
     if(ev.target.nextElementSibling.value > 1) {
       ev.target.nextElementSibling.value -= 1;
     }
   }
 
   addOne(ev) {
-    console.log(ev.target.previousElementSibling);
-    if(ev.target.previousElementSibling.value < 100) {
+    if(ev.target.previousElementSibling.value < 999) {
       ev.target.previousElementSibling.value = +ev.target.previousElementSibling.value + 1;
     }
+  }
+
+  onPaste(ev: ClipboardEvent) {
+    this.newValue = ev.clipboardData.getData('text');
+    console.log(this.newValue);
+    if (!this.allowedRegExp.test(this.newValue)) {
+      ev.stopPropagation();
+      return false;
+    }
+  }
+
+  onInput(ev) {
+    return this.allowedCharRegExp.test(ev.key);
   }
 
   

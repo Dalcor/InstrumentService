@@ -13,18 +13,21 @@
         </div>
         <div class="details">
             <div *ngFor="let item of categoryTools" class="item">
+                <a routerLink="{{ item.vendor_code }}">
                 <img src="../../assets/images/construction-and-tools.svg" alt="">
                 <div class="price"><span>{{ item.price }}</span></div>
-                <a routerLink="{{ item.vendor_code }}" class="name">{{ item.name }}</a>
+                <div class="name"><span>{{ item.name }}</span></div></a>
                 <form action="">
                     <div class="amount">
                     
-                    <button type="button" (click)="removeOne($event)">-</button>
-                    <input readonly class="amountField" name="amountField" type="number" max="100" min="1" value="1">
-                    <button type="button" (click)="addOne($event)">+</button>
+                    <button class="desc" type="button" (click)="removeOne($event)">-</button>
+                    <input type="text" (paste)="onPaste($event)" (keypress)="onInput($event)" maxlength="3" value="1">
+                    <button class="asc" type="button" (click)="addOne($event)">+</button>
                 
                     </div>
-                    <button class="submit" type="submit">Submit</button>
+                    <div class="submit" >
+                        <button type="submit">В кошик</button>
+                    </div>
                   </form>
             </div>
         </div>
