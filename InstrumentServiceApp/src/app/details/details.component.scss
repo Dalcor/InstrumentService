@@ -1,5 +1,7 @@
 @import '../../variables.scss';
 
+
+
 .details-container {
     .details-content {
         display: flex;
@@ -12,6 +14,7 @@
         .details {
             display: flex;
             flex-wrap: wrap;
+            position: relative;
             width: 70%;
             border: 1px solid gray;
             .item:hover {
@@ -73,6 +76,11 @@
                     width: 100%;
                     height: auto;
                 }
+            }
+            .pagination {
+                width: 100%;
+                display: flex;
+                justify-content: center;
             }
         }
     }

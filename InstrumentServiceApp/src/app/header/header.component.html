@@ -17,14 +17,16 @@
         <div class="catalog">
             <button (click)="toggle()">Каталог</button>
             <div *ngIf="show" class="header-catalog">
-                <ul>
+                <ul class="catalog-list">
                     <li *ngFor="let item of catalogItems">
-                       <div class="tool-name">{{ item.name }}</div>  
+                       <div class="tool-name"><img src="{{ item.media_path }}" alt="">{{ item.name }}</div>
                        <ul class="toolsItems">
                         <ng-container *ngFor="let detail of details">
                             <ng-container *ngFor="let id of detail.instruments_id">
                             <li *ngIf="id==item.id">
-                                <a [routerLink]="[item.name , detail.name ]" (click)="hideCatalog()">{{ detail.name }}</a>
+                                <a [routerLink]="[item.name , detail.name ]" (click)="hideCatalog()">
+                                    <div>{{ detail.name }}</div>
+                                </a>
                             </li>
                             </ng-container>
                           </ng-container>

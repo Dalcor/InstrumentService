@@ -30,7 +30,12 @@
                     </div>
                   </form>
             </div>
-            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <div class="pagination">
+            <pagination-controls
+             (pageChange)="p = $event"
+             previousLabel=""
+             nextLabel=""></pagination-controls>
+            </div>
         </div>
     </div>
 </div>

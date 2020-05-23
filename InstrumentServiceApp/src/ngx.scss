@@ -1,0 +1,109 @@
+.ngx-pagination {
+    display: flex !important;
+}
+
+.ngx-pagination li{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    margin: 0 4px;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #000;
+    a {
+        width: 100%;
+        height: 100%;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.ngx-pagination .current {
+    padding: 0 !important; 
+    background-color: #000 !important;
+    color: #fff !important;
+    cursor: default;
+}
+
+.ngx-pagination .pagination-previous,
+.ngx-pagination .pagination-previous.disabled {
+    position: absolute;
+    left: -60px;
+    bottom: 50%;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100px;
+    width: 40px;
+    background-color: transparent;
+    border: none !important;
+
+}
+
+.ngx-pagination .disabled:hover {
+    background: transparent;
+}
+
+.ngx-pagination a,
+.ngx-pagination {
+    padding: 0 !important;
+}
+
+.ngx-pagination .pagination-next,
+.ngx-pagination .pagination-next.disabled {
+    position: absolute;
+    right: -60px;
+    bottom: 50%;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100px;
+    width: 40px;
+    background-color: transparent;
+    border: none !important;
+}
+
+
+.ngx-pagination .pagination-previous a::before,
+.ngx-pagination .pagination-previous.disabled::before {
+    content: '' !important;
+    position: absolute;
+    width: 40px;
+    top: 50%;
+    left: 33%;
+    height: 40px;
+    border-bottom: 4px solid black;
+    border-left: 4px solid black;
+    transform: rotate(45deg) translate(-33%, -33%);
+    -webkit-transform: rotate(45deg) translate(-33%, -33%);
+    -moz-transform: rotate(45deg) translate(-33%, -33%);
+    -ms-transform: rotate(45deg) translate(-33%, -33%);
+    -o-transform: rotate(45deg) translate(-33%, -33%);
+}
+
+.ngx-pagination .pagination-previous.disabled::before,
+.ngx-pagination .pagination-next.disabled::after {
+    border-bottom: 4px solid grey;
+    border-left: 4px solid grey;
+}
+
+.ngx-pagination .pagination-next a::after,
+.ngx-pagination .pagination-next.disabled::after {
+    content: '' !important;
+    position: absolute;
+    width: 40px;
+    top: 50%;
+    right: 33%;
+    height: 40px;
+    border-bottom: 4px solid black;
+    border-left: 4px solid black;
+    transform: rotate(-135deg) translate(33%, 33%);
+    -webkit-transform: rotate(-135deg) translate(33%, 33%);
+    -moz-transform: rotate(-135deg) translate(33%, 33%);
+    -ms-transform: rotate(-135deg) translate(33%, 33%);
+    -o-transform: rotate(-135deg) translate(33%, 33%);
+}
+
+.ngx-pagination .small-screen {
+    display: none !important;
+}

@@ -56,16 +56,63 @@ form {
     .header-catalog {
         position: absolute;
         z-index: 9999;
-        .toolsItems {
-            display: none;
+        direction: rtl;
+        .catalog-list {
+            .tool-name img{
+                height: 100%;
+                padding: 2px;
+            }
+            overflow-y: scroll;
+            background-color: transparent;
+            padding-right: 180px;
+            margin: 0;
+            li {
+                text-align: left;
+                div {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    text-align: left;
+                    direction: ltr;
+                }
+            }
         }
-        .tool-name::hover ~ .toolsItems {
+        .toolsItems {
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: none;
+            margin: 0;
+            padding: 0;
+            height: 300px;
+            overflow-y: auto;
+            a {
+                height: 100%;
+                color: $primary-black;
+                text-decoration: none;
+                div {
+                    height: 100%;
+                    border-bottom: 1px solid $primary-black;
+                }
+            }
+        }
+        .toolsItems:hover {
+            display: block;
+        }
+
+        .tool-name:hover ~ .toolsItems {
             display: block;
         }
         ul {
             list-style: none;
             background-color: white;
-            width: 100px;
+            height: 300px;
+            li {
+                width: 180px;
+                background-color: #fff;
+                height: 30px;
+            }
         }
     }
 }
