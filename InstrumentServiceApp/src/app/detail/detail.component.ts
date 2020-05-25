@@ -3,6 +3,7 @@ import { ToolService } from '../../services/tool.service';
 import { baseURL } from '../../shared/baseurl';
 import { Params, ActivatedRoute} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { CartService } from 'src/services/cart.service';
 
 @Component({
   selector: 'app-detail',
@@ -15,14 +16,53 @@ export class DetailComponent implements OnInit {
   tool: string;
   detail: string;
   item: any;
+  categoryTools: any;
+  allowedRegExp: RegExp = /^[0-9]+$/;
+  allowedCharRegExp: RegExp = /[0-9]/;
+  newValue: any;
+  amount: number = 1;
 
   constructor(private toolService: ToolService,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private cartService: CartService
     ) { }
 
   ngOnInit(): void {
     this.activateRoute.params.pipe(switchMap((params: Params) => {return this.toolService.getTool(params['tool'],params['detail'], params['vendor'])}))
     .subscribe(item => {this.item = item[0];});
+  }
+
+  removeOne(ev) {
+    if(ev.target.nextElementSibling.value > 1) {
+      ev.target.nextElementSibling.value -= 1;
+      this.amount = ev.target.nextElementSibling.value;
+    }
+  }
+
+  addOne(ev) {
+    if(ev.target.previousElementSibling.value < 999) {
+      ev.target.previousElementSibling.value = +ev.target.previousElementSibling.value + 1;
+      this.amount = ev.target.previousElementSibling.value;
+    }
+  }
+
+  onPaste(ev: ClipboardEvent) {
+    this.newValue = ev.clipboardData.getData('text');
+    console.log(this.newValue);
+    if (!this.allowedRegExp.test(this.newValue)) {
+      ev.stopPropagation();
+      return false;
+    } else {
+      this.amount = this.newValue;
+    }
+  }
+
+  onInput(ev) {
+    return this.allowedCharRegExp.test(ev.key);
+  }
+
+  toCart(vendor, amount) {
+    this.cartService.setItem(vendor, amount);
   }
 
   

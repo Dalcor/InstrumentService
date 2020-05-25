@@ -1,0 +1,250 @@
+@import './variables.scss';
+
+.ngx-pagination {
+    display: flex !important;
+}
+
+.ngx-pagination li{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    margin: 0 4px;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #000;
+    a {
+        width: 100%;
+        height: 100%;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.ngx-pagination .current {
+    padding: 0 !important; 
+    background-color: #000 !important;
+    color: #fff !important;
+    cursor: default;
+}
+
+.ngx-pagination .pagination-previous,
+.ngx-pagination .pagination-previous.disabled {
+    position: absolute;
+    left: -60px;
+    bottom: 50%;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100px;
+    width: 40px;
+    background-color: transparent;
+    border: none !important;
+
+}
+
+.ngx-pagination .disabled:hover {
+    background: transparent;
+}
+
+.ngx-pagination a,
+.ngx-pagination {
+    padding: 0 !important;
+}
+
+.ngx-pagination .pagination-next,
+.ngx-pagination .pagination-next.disabled {
+    position: absolute;
+    right: -60px;
+    bottom: 50%;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100px;
+    width: 40px;
+    background-color: transparent;
+    border: none !important;
+}
+
+
+.ngx-pagination .pagination-previous a::before,
+.ngx-pagination .pagination-previous.disabled::before {
+    content: '' !important;
+    position: absolute;
+    width: 40px;
+    top: 50%;
+    left: 33%;
+    height: 40px;
+    border-bottom: 4px solid black;
+    border-left: 4px solid black;
+    transform: rotate(45deg) translate(-33%, -33%);
+    -webkit-transform: rotate(45deg) translate(-33%, -33%);
+    -moz-transform: rotate(45deg) translate(-33%, -33%);
+    -ms-transform: rotate(45deg) translate(-33%, -33%);
+    -o-transform: rotate(45deg) translate(-33%, -33%);
+}
+
+.ngx-pagination .pagination-previous.disabled::before,
+.ngx-pagination .pagination-next.disabled::after {
+    border-bottom: 4px solid grey;
+    border-left: 4px solid grey;
+}
+
+.ngx-pagination .pagination-next a::after,
+.ngx-pagination .pagination-next.disabled::after {
+    content: '' !important;
+    position: absolute;
+    width: 40px;
+    top: 50%;
+    right: 33%;
+    height: 40px;
+    border-bottom: 4px solid black;
+    border-left: 4px solid black;
+    transform: rotate(-135deg) translate(33%, 33%);
+    -webkit-transform: rotate(-135deg) translate(33%, 33%);
+    -moz-transform: rotate(-135deg) translate(33%, 33%);
+    -ms-transform: rotate(-135deg) translate(33%, 33%);
+    -o-transform: rotate(-135deg) translate(33%, 33%);
+}
+
+.ngx-pagination .small-screen {
+    display: none !important;
+}
+
+/*------------ngx-catalog-----------------------*/
+
+.catalog .slick-list {
+    padding: 20px 0;
+    margin: 0 -2px;  
+  }
+  
+  .slick-prev, .slick-next,
+  .slick-prev:hover .slick-next:hover {
+    background: transparent;
+  }
+
+  .slick-prev {
+    left: -60px;
+    height: calc(100% - 40px);
+    width: 60px;
+  }
+
+  .slick-next {
+    right: -60px;
+    height: calc(100% - 40px);
+    width: 60px;
+  }
+
+  .slick-prev:before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    top: 50%;
+    left: 33%;
+    height: 40px;
+    border-bottom: 4px solid black;
+    border-left: 4px solid black;
+    transform: rotate(45deg) translate(-33%, -33%);
+    -webkit-transform: rotate(45deg) translate(-33%, -33%);
+    -moz-transform: rotate(45deg) translate(-33%, -33%);
+    -ms-transform: rotate(45deg) translate(-33%, -33%);
+    -o-transform: rotate(45deg) translate(-33%, -33%);
+  }
+
+  .slick-next:before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    top: 50%;
+    right: 33%;
+    height: 40px;
+    border-bottom: 4px solid black;
+    border-left: 4px solid black;
+    transform: rotate(-135deg) translate(33%, 33%);
+    -webkit-transform: rotate(-135deg) translate(33%, 33%);
+    -moz-transform: rotate(-135deg) translate(33%, 33%);
+    -ms-transform: rotate(-135deg) translate(33%, 33%);
+    -o-transform: rotate(-135deg) translate(33%, 33%);
+  }
+  
+  .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+    outline: none;
+    background: $primary-yellow;
+    color: white;
+  }
+
+  .slick-prev.slick-disabled:hover, .slick-next.slick-disabled:hover,
+  .slick-prev.slick-disabled:focus, .slick-next.slick-disabled:focus {
+    outline: none;
+    background: transparent;
+    color: white;
+  }
+  
+  .slick-dots li  {
+    margin-bottom: 2px;
+    margin-top: 2px;
+  }
+  
+  .slick-dots li button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    /* display: block; */
+    height: 20px;
+    width: 20px;
+    outline: none;
+    line-height: 0px;
+    font-size: 0px;
+    color: transparent;
+    /* padding: 5px; */
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  
+  .slick-dots li.slick-active button:before {
+    width: 17px;
+    height: 17px;
+    opacity: 0.75;
+  }
+  
+  .slick-dots {
+    position: absolute;
+    bottom: 50%;
+    right: 9px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    width: 20px;
+  }
+  
+  
+  
+  .slick-dots li button:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    content: "";
+    width: 15px;
+    height: 15px;
+    font-family: "slick";
+    font-size: 6px;
+    line-height: 20px;
+    text-align: center;
+    background-color: black;
+    border-radius: 50%;
+    opacity: 0.25;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }

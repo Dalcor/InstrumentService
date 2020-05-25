@@ -3,7 +3,13 @@
         <div class="content">
             <div class="top-header-content">
                 <div>
-                    ngSubmit
+                    <a href="tel:+380952457317">+(380)-95-245-73-17</a>
+                </div>
+                <div>
+                    <a href="mailto:yourmail@mysite.com">vitia2282@gmail.com</a>
+                </div>
+                <div>
+                   <a routerLink="cart"><img src="../../assets/images/basket.svg" alt="Кошик"></a>
                 </div>
             </div>
         </div>
@@ -11,31 +17,43 @@
     <div class="bottom-header">
         <div class="content">
             <div class="bottom-header-content">
-        <div>
-            logo
+        <div class="logo-container">
+            <a routerLink=""><img src="../../assets/images/logo.svg" alt=""></a>
         </div>
         <div class="catalog">
-            <button (click)="toggle()">Каталог</button>
+            <button (click)="toggle()">
+                <img src="../../assets/images/bars.svg" alt="">
+                <div>Каталог</div></button>
             <div *ngIf="show" class="header-catalog">
-                <ul>
+                <ul class="catalog-list">
                     <li *ngFor="let item of catalogItems">
-                       {{ item.name }}
+                       <div class="tool-name"><img src="{{ item.media_path }}" alt="">{{ item.name }}</div>
                        <ul class="toolsItems">
                         <ng-container *ngFor="let detail of details">
                             <ng-container *ngFor="let id of detail.instruments_id">
                             <li *ngIf="id==item.id">
-                                <a [routerLink]="[item.name , detail.name ]" (click)="hideCatalog()">{{ detail.name }}</a>
+                                <a [routerLink]="[item.name , detail.name ]" (click)="hideCatalog()">
+                                    <div>{{ detail.name }}</div>
+                                </a>
                             </li>
                             </ng-container>
                           </ng-container>
                        </ul>
                     </li>
+                    
                 </ul>
             </div>
         </div>
         <nav>
-            <a routerLink="/" routerLinkActive="active" mat-button (click)="hideCatalog()"> Home</a>
-            <a routerLink="/contacts" routerLinkActive="active" mat-button (click)="hideCatalog()"> Contact</a>
+            <ul>
+                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Головна</a></li>
+                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Аксесуари</a></li>
+                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Сервіс</a></li>
+                <li><a routerLink="/contacts" routerLinkActive="active" (click)="hideCatalog()"> Акції</a></li>
+                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Прокат</a></li>
+                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Про нас</a></li>
+                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Контакти</a></li>
+            </ul>
         </nav>
         <span class="flex-spacer"></span>
         <form class="search-form" novalidate [formGroup]="searchForm" (ngSubmit)="onSubmit()">  

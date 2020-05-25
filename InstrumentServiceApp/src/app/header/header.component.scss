@@ -11,6 +11,22 @@
             justify-content: flex-end;
             align-items: center;
             height: 100%;
+            div {
+                margin-left: 17px;
+                a {
+                    color: white;
+
+                    font-family: TT Norms;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 12px;
+                    line-height: 14px;
+                    text-align: center;
+                    letter-spacing: 0.428571px;
+
+                    text-decoration: none;
+                }
+            } 
         }
     }
     .bottom-header {
@@ -24,6 +40,35 @@
             justify-content: space-between;
             height: 100%;
             align-items: center;
+            .logo-container {
+                a {
+                    width: 37px;
+                }
+            }
+            nav {
+                width: 100%;
+                ul {
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-around;
+                    li {
+                        margin: 0 10px;
+                        a {
+                            text-decoration: none;
+                            color: #000;
+                            font-family: TT Norms;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 16px;
+                            line-height: 19px;
+                            letter-spacing: 0.571429px;                
+                        }
+                    }
+                }
+            }
         }
     }    
 
@@ -50,16 +95,193 @@ form {
 
 .catalog {
     position: relative;
+    height: 100%;
+    margin-right: 30px;
+    >button {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        div {
+            font-family: TT Norms;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            letter-spacing: 0.571429px;
+        }
+        img {
+            margin-right: 10px;
+        }
+    }
     .header-catalog {
         position: absolute;
         z-index: 9999;
+        direction: rtl;
+        ::-webkit-scrollbar-button {
+            width: 5px;
+            height: 0px
+          }
+          
+          ::-webkit-scrollbar-track {
+            background-color: #ecedee;
+          }
+          
+          ::-webkit-scrollbar-thumb {
+            border-radius: 0px;
+            background-color: #9D9A9A;
+          }
+          
+          ::-webkit-scrollbar-thumb:hover {
+            background-color: #9D9A9A;
+          }
+          
+          ::-webkit-resizer {
+            width: 8px;
+            height: 0px;
+          }
+          
+          ::-webkit-scrollbar {
+            width: 8px;
+          }
+        .catalog-list {
+            .tool-name{
+                position: relative;
+                cursor: pointer;
+                img{
+                    height: 100%;
+                    padding: 6px;
+                }
+            } 
+            .tool-name:hover {
+                background-color: $primary-yellow;
+            }
+            overflow-y: scroll;
+            background-color: transparent;
+            margin: 0;
+            padding: 0;
+            ::-webkit-scrollbar-button {
+                width: 5px;
+                height: 0px
+              }
+              
+              ::-webkit-scrollbar-track {
+                background-color: #ecedee;
+              }
+              
+              ::-webkit-scrollbar-thumb {
+                border-radius: 0px;
+                background-color: #9D9A9A;
+              }
+              
+              ::-webkit-scrollbar-thumb:hover {
+                background-color: #9D9A9A;
+              }
+              
+              ::-webkit-resizer {
+                width: 8px;
+                height: 0px;
+              }
+              
+              ::-webkit-scrollbar {
+                width: 8px;
+              }
+            li {
+                text-align: left;
+                div {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    text-align: left;
+                    direction: ltr;
+                }
+            }
+            li:hover {
+                background-color: $primary-yellow;
+            }
+
+            li:hover > div:after {
+                position: absolute;
+                content: '';
+                width: 7px;
+                height: 7px;
+                right: 14px;
+                
+                border-right: 2px solid black;
+                border-top: 2px solid black;
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+}
+        }
+        .toolsItems {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            display: none;
+            margin: 0;
+            padding: 0;
+            height: 426px;
+            overflow-y: auto;
+            a {
+                height: 100%;
+                color: $primary-black;
+                text-decoration: none;
+                div {
+                    height: 100%;
+                }
+            }
+
+        }
+        .toolsItems:hover {
+            display: block;
+        }
+        
+        .tool-name:hover ~ .toolsItems {
+            display: block;
+        }
         ul {
             list-style: none;
             background-color: white;
-            width: 100px;
+            height: 426px;
+            li {
+                width: 321px;
+                background-color: #fff;
+                height: 47px;
+                font-family: TT Norms;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 19px;
+                letter-spacing: 0.571429px;
+                color: #6C6C6C;
+                padding-left: 10px;
+                img {
+                    padding: 2px;
+                }                     
+                a {
+                    font-family: TT Norms;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 19px;
+                    letter-spacing: 0.571429px;
+
+                    color: #6C6C6C;
+                }
+            }
         }
     }
 }
+
+
 
 
 
