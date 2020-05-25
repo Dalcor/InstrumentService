@@ -3,8 +3,9 @@ import { Tool } from 'src/shared/tool';
 import { ToolService } from 'src/services/tool.service';
 import { baseURL } from '../../shared/baseurl';
 import { Params, ActivatedRoute} from '@angular/router';
-import {Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { FilterPipe } from '../../pipes/filter.pipe';
 
 @Component({
   selector: 'app-details',
@@ -18,15 +19,46 @@ export class DetailsComponent implements OnInit {
   allowedRegExp: RegExp = /^[0-9]+$/;
   allowedCharRegExp: RegExp = /[0-9]/;
   newValue: any;
+  names: any;
+  filterItems: Array<any>;
+
   constructor(private toolService: ToolService,
     private activateRoute: ActivatedRoute) {
+
      }
   id: number;
+  p: number = 1;
 
   ngOnInit(): void {
     this.activateRoute.params.pipe(switchMap((params: Params) => {return this.toolService.getCategoryTools(params['tool'],params['detail'])}))
-    .subscribe(items => {this.categoryTools = items;});
+    .subscribe(items => {
+      this.names = items[0];
+      this.categoryTools = items;
+      console.log(this.names);
+      console.log(this.categoryTools.length);
+    });
+    this.detail = location.href.replace(baseURL, '')
+    .split("/")[0].replace(/%20/g, " ");
+    this.tool = location.href.replace(baseURL, '')
+    .split("/")[1].replace(/%20/g, " ");
+
+    this.filterItems = [
+      {
+        value: 'Lewis Ltd',
+        checked: false
+      },
+      {
+        value: 'Becker-Greene',
+        checked: false
+      },
+      {
+        value: 'Luna',
+        checked: false
+      },
+    ];
   }
+
+  
 
   removeOne(ev) {
     if(ev.target.nextElementSibling.value > 1) {
@@ -51,6 +83,10 @@ export class DetailsComponent implements OnInit {
 
   onInput(ev) {
     return this.allowedCharRegExp.test(ev.key);
+  }
+
+  checked() {
+    return this.filterItems.filter(item => { return item.checked; });
   }
 
   

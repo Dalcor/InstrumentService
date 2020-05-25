@@ -32,6 +32,8 @@ import { DetailsComponent } from './details/details.component';
 import { DetailComponent } from './detail/detail.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { CartComponent } from './cart/cart.component';
+import { FilterPipe } from '../pipes/filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { CartComponent } from './cart/cart.component';
     DetailsComponent,
     DetailComponent,
     CatalogComponent,
-    CartComponent
+    CartComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
