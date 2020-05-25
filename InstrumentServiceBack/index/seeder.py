@@ -2,7 +2,7 @@ from django_seed import Seed
 from .models import *
 
 
-def seed(amount, dependence):
+def seed(amount, dependence, tool):
     seeder = Seed.seeder()
 
     seeder.add_entity(InstrumentCatalog, amount,{
@@ -22,7 +22,7 @@ def seed(amount, dependence):
 
     seeder.add_entity(InstrumentCatalogDetailIntermediary, dependence)
 
-    seeder.add_entity(Tools, dependence,{
+    seeder.add_entity(Tools, tool,{
         'name': lambda x: seeder.faker.company(),
         'vendor_code': lambda x: seeder.faker.ean(length = 8),
         'price' : lambda x : seeder.faker.random_int(min = 1, max = 1000),

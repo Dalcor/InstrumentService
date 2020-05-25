@@ -24,7 +24,9 @@ urlpatterns = [
     # path('api/', include('index.urls')),
     # Web App Entry
     re_path(r'^$', TemplateView.as_view(template_name="index.html"), name='index'),
-    re_path(r'home', TemplateView.as_view(template_name="index.html"), name='index'),
+    re_path(r'contacts', TemplateView.as_view(template_name="index.html"), name='index'),
+    re_path(r'(?P<instrument>.+)/(?P<detail>.+)', TemplateView.as_view(template_name="index.html"), name='index'),
+    re_path(r'(?P<instrument>.+)/(?P<detail>.+)/(?P<vendor>.+)', TemplateView.as_view(template_name="index.html"), name='index'),
 ]
 
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

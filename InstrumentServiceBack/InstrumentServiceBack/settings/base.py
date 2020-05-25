@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'rest_framework',
      'corsheaders',
      'django_seed',
+     'drf_multiple_model',
     # Local
     'index',
 

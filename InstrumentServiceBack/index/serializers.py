@@ -7,7 +7,7 @@ class InstrumentCatalogSerializer(serializers.ModelSerializer):
     #   media_path = serializers.HyperlinkedModelSerializer()
     class Meta:
         model = InstrumentCatalog
-        fields = ('id', 'name', 'media_path',)
+        fields = ('id', 'name', 'media_path', 'name_link')
 
 
 class InstrumentCatalogDetailSerializer(serializers.ModelSerializer):
@@ -15,7 +15,7 @@ class InstrumentCatalogDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = InstrumentCatalogDetail
-        fields = ('id', 'name', 'media_path', 'instruments_id', )
+        fields = ('id', 'name', 'media_path', 'instruments_id', 'name_link')
 
     def get_instruments_id(self, obj):
         instruments_id_array = []
@@ -54,6 +54,18 @@ class ToolsSerializer(serializers.ModelSerializer):
 
 
 
+
     # def get_lineup_name(self, obj):
     #     lineup_array = []
     #     queryset = ToolsLineup.objects.filter(tool = obj.id)
+
+
+class CompanySerializer(serializers.ModelSerializer):
+    checked = serializers.SerializerMethodField()
+    class Meta:
+        model = Companys
+        fields = ('id', 'name', 'checked')
+
+
+    def get_checked(self, obj):
+        return False
