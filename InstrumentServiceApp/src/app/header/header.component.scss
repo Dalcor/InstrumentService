@@ -48,6 +48,30 @@
                     width: 100%;
                 }
             }
+            nav {
+                width: 100%;
+                ul {
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-around;
+                    li {
+                        margin: 0 10px;
+                        a {
+                            text-decoration: none;
+                            color: #000;
+                            font-family: TT Norms;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 16px;
+                            line-height: 19px;
+                            letter-spacing: 0.571429px;                
+                        }
+                    }
+                }
+            }
         }
     }    
 
@@ -74,6 +98,29 @@ form {
 
 .catalog {
     position: relative;
+    height: 100%;
+    margin-right: 30px;
+    >button {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        div {
+            font-family: TT Norms;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            letter-spacing: 0.571429px;
+        }
+        img {
+            margin-right: 10px;
+        }
+    }
     .header-catalog {
         position: absolute;
         z-index: 9999;
@@ -137,6 +184,8 @@ form {
         }
     }
 }
+
+
 
 
 

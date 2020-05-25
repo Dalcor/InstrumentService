@@ -21,7 +21,9 @@
             <a routerLink=""><img src="../../assets/images/logo.svg" alt=""></a>
         </div>
         <div class="catalog">
-            <button (click)="toggle()">Каталог</button>
+            <button (click)="toggle()">
+                <img src="../../assets/images/bars.svg" alt="">
+                <div>Каталог</div></button>
             <div *ngIf="show" class="header-catalog">
                 <ul class="catalog-list">
                     <li *ngFor="let item of catalogItems">
@@ -43,8 +45,15 @@
             </div>
         </div>
         <nav>
-            <a routerLink="/" routerLinkActive="active" mat-button (click)="hideCatalog()"> Home</a>
-            <a routerLink="/contacts" routerLinkActive="active" mat-button (click)="hideCatalog()"> Contact</a>
+            <ul>
+                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Головна</a></li>
+                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Аксесуари</a></li>
+                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Сервіс</a></li>
+                <li><a routerLink="/contacts" routerLinkActive="active" (click)="hideCatalog()"> Акції</a></li>
+                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Прокат</a></li>
+                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Про нас</a></li>
+                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Контакти</a></li>
+            </ul>
         </nav>
         <span class="flex-spacer"></span>
         <form class="search-form" novalidate [formGroup]="searchForm" (ngSubmit)="onSubmit()">  
