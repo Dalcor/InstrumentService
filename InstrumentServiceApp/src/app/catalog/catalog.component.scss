@@ -59,6 +59,7 @@
         background-image: url('../../assets/images/construction-and-tools.svg');
       }
     }
+
     .item:focus {
       outline: none;
     }
@@ -88,27 +89,67 @@
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    .item {
-      display: flex;
-      flex-direction: column;
+    margin: 15px 0 36px 0;
+    .item-container {
+      padding: 0 20px;
       width: 20%;
-      padding: 20px;
-      flex-shrink: 0;
 
-      .item-image {
-        width: 100%;
-        img {
+      .item {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        font-family: TT Norms;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 0.571429px;
+        margin-bottom: 5px;
+        .item-image {
           width: 100%;
-          height: auto;
+          padding: 0 10px;
+          img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+          }
         }
       }
     }
+
+    
+    .item:hover>.more,
+    .more:focus {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .item:hover {
+      box-shadow: 9px 9px 12px -2px #ccc;
+    }
     .more {
-      width: 70%;
-      border-radius: 10px;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      -ms-border-radius: 10px;
-      -o-border-radius: 10px;
-}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+      opacity: 0;
+      background-color: $primary-yellow;
+      border-radius: 20px;
+      margin-left: 17px;
+      height: 32px;
+      width: 120px;
+      border: none;
+      text-align: left;
+      padding: 0 20px;
+      margin: 17px 0 17px 17px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+      font-family: TT Norms;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.571429px;
+    }
   }

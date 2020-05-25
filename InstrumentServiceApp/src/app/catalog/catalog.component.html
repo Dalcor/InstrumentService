@@ -16,17 +16,22 @@
       
     </ngx-slick-carousel>
   </div>
-  <div class="catalog-items content" id='catalog'>
+  <div class="content" id='catalog'>
+    <div class="catalog-items">
     <ng-container *ngFor="let detail of details">
     <ng-container *ngFor="let id of detail.instruments_id">
-    <div *ngIf="id==selectedItem" class="item">
+    <div *ngIf="id==selectedItem" class="item-container">
+      <div class="item">
       <div class="item-image">
         <img src="{{ detail.media_path }}" alt="">
       </div>
-      <div class="price">{{ detail.id }}</div>
-      <div class="description">{{ detail.name }}</div>
-      <button  [routerLink]="[ selectedItemName , detail.name]" class="more">Больше -></button>
+      <div class="name">{{ detail.name }}</div>
+      <button  [routerLink]="[ selectedItemName , detail.name]" class="more">
+        <div>Більше</div>
+        <img src="../../assets/images/arrow-right.svg" alt=""></button>
+      </div>
     </div>
     </ng-container>
   </ng-container>
+  </div>
   </div>
