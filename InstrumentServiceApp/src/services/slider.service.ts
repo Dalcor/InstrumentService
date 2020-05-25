@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 export class SliderService {
 
   SLIDERIMAGES = [
-    {"media_path": "assets/images/slider-img-1.jpeg"},
-    {"media_path": "assets/images/slider-img-2.jpg"}
+    {"media_path": "assets/images/slider-image-3.jpg"},
+    {"media_path": "assets/images/slider-image-4.jpg"}
   ];
 
   constructor() { }
