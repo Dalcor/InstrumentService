@@ -11,9 +11,22 @@
             justify-content: flex-end;
             align-items: center;
             height: 100%;
-            a {
-                color: white;
-            }
+            div {
+                margin-left: 17px;
+                a {
+                    color: white;
+
+                    font-family: TT Norms;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 12px;
+                    line-height: 14px;
+                    text-align: center;
+                    letter-spacing: 0.428571px;
+
+                    text-decoration: none;
+                }
+            } 
         }
     }
     .bottom-header {
@@ -27,6 +40,14 @@
             justify-content: space-between;
             height: 100%;
             align-items: center;
+            .logo-container {
+                a {
+                    width: 37px;
+                }
+                img {
+                    width: 100%;
+                }
+            }
         }
     }    
 
