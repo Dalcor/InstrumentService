@@ -8,7 +8,7 @@
     display: flex !important;
     justify-content: center;
     align-items: center;
-    margin: 0 4px;
+    margin: 0 7px !important;
     width: 30px;
     height: 30px;
     background-color: #fff;
@@ -43,6 +43,10 @@
 
 }
 
+.ngx-pagination a:hover, .ngx-pagination button:hover {
+  background: $primary-yellow !important;
+}
+
 .ngx-pagination .disabled:hover {
     background: transparent;
 }
@@ -50,6 +54,7 @@
 .ngx-pagination a,
 .ngx-pagination {
     padding: 0 !important;
+    margin:45px 0 !important;  
 }
 
 .ngx-pagination .pagination-next,
@@ -60,7 +65,7 @@
     padding: 0 !important;
     margin: 0 !important;
     height: 100px;
-    width: 40px;
+    width: 60px;
     background-color: transparent;
     border: none !important;
 }

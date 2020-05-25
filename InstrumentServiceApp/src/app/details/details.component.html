@@ -4,20 +4,31 @@
             <li>
                 <a routerLink="">Главная</a>
             </li>
+            <li>
+                <a [routerLink]="['/' + detail , tool ]">{{ tool }}</a>
+            </li>
         </ul>
     </div>
     <div class="details-content">
         <div class="filter">
             <h2>Фільтр</h2>
-            <label for=""><input type="checkbox">Makita</label>
+            <div class="form form-inline">
+                <div *ngFor="let filterItem of filterItems; let i = index;" class="form-check" style="padding-right:20px;">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="filterItem.checked" [value]="filterItem.value"> Value {{ i + 1 }}
+                  </label>
+                </div>
+              </div>
+              <pre>Selected items: <span *ngFor="let filterItem of checked()" style="padding-right:10px;">{{ filterItem.value }}</span></pre>
         </div>
-        <div class="details">
-            <div *ngFor="let item of categoryTools | paginate: { itemsPerPage: 9, currentPage: p}" class="item">
+        <div *ngIf="categoryTools" class="details">
+            <div *ngFor="let item of categoryTools | slice:1 | filter: { name: ''} : checked() : false | paginate: { itemsPerPage: 9, currentPage: p}" class="item-container">
+                <div class="item">
                 <a routerLink="{{ item.vendor_code }}">
                 <img src="../../assets/images/construction-and-tools.svg" alt="">
-                <div class="price"><span>{{ item.price }}</span></div>
+                <div class="price"><span>₴ {{ item.price }}</span></div>
                 <div class="name"><span>{{ item.name }}</span></div></a>
-                <form action="">
+                <div class="as">
                     <div class="amount">
                     
                     <button class="desc" type="button" (click)="removeOne($event)">-</button>
@@ -28,7 +39,8 @@
                     <div class="submit" >
                         <button type="submit">В кошик</button>
                     </div>
-                  </form>
+                </div>
+                </div>
             </div>
             <div class="pagination">
             <pagination-controls
@@ -36,6 +48,9 @@
              previousLabel=""
              nextLabel=""></pagination-controls>
             </div>
+        </div>
+        <div *ngIf="!categoryTools" class="details none">
+            В даній категорії поки що немає товарів.
         </div>
     </div>
 </div>
