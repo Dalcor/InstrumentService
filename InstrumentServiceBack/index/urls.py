@@ -6,8 +6,8 @@ urlpatterns = [
 path('GetCatalog', InstrumentCatalogList.as_view()),
 path('GetInstrumentDetail', InstrumentCatalogDetailList.as_view()),
 path('GetSliders', SlidersList.as_view()),
+re_path('(?P<instrument>.+)/(?P<detail>.+)/(?P<vendor>.+)', ConcreteTool.as_view()),
 re_path('(?P<instrument>.+)/(?P<detail>.+)', ToolsList.as_view()),
-re_path(r'(?P<instrument>.+)/(?P<detail>.+)/(?P<vendor>.+)', ConcreteTool.as_view()),
 path('GetCartItems', CartItemsList.as_view()),
 path('GetFilterTags', FilterTagList.as_view()),
 ]

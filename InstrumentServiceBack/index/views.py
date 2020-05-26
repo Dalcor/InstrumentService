@@ -64,7 +64,7 @@ class ConcreteTool(generics.ListAPIView):
 
 
     def get_queryset(self):
-        queryset = Tools.objects.get(vendor_code = self.kwargs['vendor'])
+        queryset = Tools.objects.filter(vendor_code = self.kwargs['vendor'])
         return queryset
 
 
@@ -73,7 +73,7 @@ class CartItemsList(generics.ListAPIView):
 
     def get_queryset(self):
         vendor_code = self.request.data
-        vendor_code.remove('csrftoken')
+        # vendor_code.remove('csrftoken')
         # vendor = InstrumentCatalog.objects.all()
         # queryset = Tools.objects.filter(vendor_code__in = vendor)
         queryset = Tools.objects.filter(vendor_code__in = vendor_code)

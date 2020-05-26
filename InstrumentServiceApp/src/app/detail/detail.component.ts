@@ -30,6 +30,10 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     this.activateRoute.params.pipe(switchMap((params: Params) => {return this.toolService.getTool(params['tool'],params['detail'], params['vendor'])}))
     .subscribe(item => {this.item = item[0];});
+    this.activateRoute.params.pipe(switchMap((params: Params) => {return this.toolService.getCategoryTools(params['tool'],params['detail'])}))
+    .subscribe(items => {
+      this.categoryTools = items;
+    });
     this.detail = location.href.replace(baseURL, '')
     .split("/")[0].replace( /%20/g , ' ');
     this.tool = location.href.replace(baseURL, '')
