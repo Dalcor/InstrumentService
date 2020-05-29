@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError, of, from } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { baseApiURL } from '../shared/baseapiurl';
+import { baseURL } from 'src/shared/baseurl';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +23,7 @@ export class ToolService {
   }
 
   public getCartItems(vendorArray) {
-    console.log(vendorArray);
     return this.http.post(baseApiURL + "/GetCartItems", vendorArray);
-
   }
 
   public getToolDetails() {
@@ -36,10 +35,14 @@ export class ToolService {
   }
 
   public getTool(instrument, tool, vendor) {
-    return this.http.get(this.GetCategoryTools + "/" + instrument +"/" + tool + "?vendor_code=" + vendor);
+    return this.http.get(this.GetCategoryTools + "/" + instrument +"/" + tool + "/" + vendor);
   }
 
   public changeTool(tool: Tool):Observable<number> {
     return of(tool.id);
+  }
+
+  public GetFilterTags() {
+    return this.http.get(baseApiURL + "/GetFilterTags");
   }
 }

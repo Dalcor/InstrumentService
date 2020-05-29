@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="16px" viewBox="0 0 22 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>bars</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="header" transform="translate(-93.000000, -56.000000)" fill="#000000" fill-rule="nonzero">
+            <g id="Group-14">
+                <g id="Group" transform="translate(93.000000, 55.000000)">
+                    <g id="bars" transform="translate(0.000000, 1.000000)">
+                        <path d="M20.7,8.8 L0.9,8.8 C0.403198256,8.8 0,8.44160155 0,8 C0,7.55839845 0.403198256,7.2 0.9,7.2 L20.7,7.2 C21.1968017,7.2 21.6,7.55839845 21.6,8 C21.6,8.44160155 21.1968017,8.8 20.7,8.8 Z" id="Path"></path>
+                        <path d="M20.7,1.6 L0.9,1.6 C0.403198256,1.6 0,1.24160155 0,0.8 C0,0.35839845 0.403198256,0 0.9,0 L20.7,0 C21.1968017,0 21.6,0.35839845 21.6,0.8 C21.6,1.24160155 21.1968017,1.6 20.7,1.6 Z" id="Path"></path>
+                        <path d="M20.7,16 L0.9,16 C0.403198256,16 0,15.6416015 0,15.2 C0,14.7583985 0.403198256,14.4 0.9,14.4 L20.7,14.4 C21.1968017,14.4 21.6,14.7583984 21.6,15.2 C21.6,15.6416015 21.1968017,16 20.7,16 Z" id="Path"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

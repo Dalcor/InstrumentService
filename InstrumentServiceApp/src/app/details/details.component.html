@@ -4,25 +4,25 @@
             <li>
                 <a routerLink="">Главная</a>
             </li>
-            <li>
-                <a [routerLink]="['/' + detail , tool ]">{{ tool }}</a>
+            <li *ngIf="categoryTools">
+                <a [routerLink]="['/' + categoryTools.InstrumentCatalog[0].name , categoryTools.InstrumentCatalogDetail[0].name ]">{{ categoryTools.InstrumentCatalogDetail[0].name }}</a>
             </li>
         </ul>
     </div>
-    <div class="details-content">
+    <div *ngIf="filterItems" class="details-content">
         <div class="filter">
             <h2>Фільтр</h2>
             <div class="form form-inline">
-                <div *ngFor="let filterItem of filterItems; let i = index;" class="form-check" style="padding-right:20px;">
+                <div *ngFor="let filterItem of filterItems" class="form-check" style="padding-right:20px;">
                   <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" [(ngModel)]="filterItem.checked" [value]="filterItem.value"> Value {{ i + 1 }}
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="filterItem.checked" [value]="filterItem.id"> {{filterItem.name}}
                   </label>
                 </div>
               </div>
-              <pre>Selected items: <span *ngFor="let filterItem of checked()" style="padding-right:10px;">{{ filterItem.value }}</span></pre>
+              <pre>Selected items: <span *ngFor="let filterItem of checked()" style="padding-right:10px;">{{ filterItem.id }}</span></pre>
         </div>
         <div *ngIf="categoryTools" class="details">
-            <div *ngFor="let item of categoryTools | slice:1 | filter: { name: ''} : checked() : false | paginate: { itemsPerPage: 9, currentPage: p}" class="item-container">
+            <div *ngFor="let item of categoryTools.Tools | filter: { company: ''} : checked() : false | paginate: { itemsPerPage: 9, currentPage: p}" class="item-container">
                 <div class="item">
                 <a routerLink="{{ item.vendor_code }}">
                 <img src="../../assets/images/construction-and-tools.svg" alt="">

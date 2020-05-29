@@ -32,30 +32,12 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.activateRoute.params.pipe(switchMap((params: Params) => {return this.toolService.getCategoryTools(params['tool'],params['detail'])}))
     .subscribe(items => {
-      this.names = items[0];
       this.categoryTools = items;
-      console.log(this.names);
-      console.log(this.categoryTools.length);
+      console.log(this.categoryTools.InstrumentCatalog);
     });
-    this.detail = location.href.replace(baseURL, '')
-    .split("/")[0].replace(/%20/g, " ");
-    this.tool = location.href.replace(baseURL, '')
-    .split("/")[1].replace(/%20/g, " ");
-
-    this.filterItems = [
-      {
-        value: 'Lewis Ltd',
-        checked: false
-      },
-      {
-        value: 'Becker-Greene',
-        checked: false
-      },
-      {
-        value: 'Luna',
-        checked: false
-      },
-    ];
+    this.toolService.GetFilterTags().subscribe(
+      data => {this.filterItems = Object.values(data);
+      console.log(this.filterItems)});  
   }
 
   
