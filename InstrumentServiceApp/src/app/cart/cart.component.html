@@ -1,1 +1,20 @@
-<p *ngFor="let value of valuesArray">{{ value }}</p>
+<div *ngIf="!values">Корзина пуста!</div>
+<div>
+<div class="cart-table-header">
+    <div>Vendor Code</div>
+    <div>Name</div>
+    <div>Total price</div>
+    <div>Amount</div>
+    <div>Delete</div>
+</div>
+<div *ngFor="let item of items" class="cart-table-header">
+        <div>{{item.name}}</div>
+        <div>{{item.price}}</div>
+        <div>{{item.vendor_code}}</div>
+        <ng-container *ngFor="let value of keyValueArray;let i = index">
+            <div *ngIf="value[0] == item.vendor_code">{{ value[1] }}</div>
+        </ng-container>
+        <div><button (click)="removeFromCart(item.vendor_code)">Delete</button></div>
+</div>
+</div>
+

@@ -20,10 +20,15 @@ export class CartService {
   }
 
   getCartItems(vendorArray): Observable<any> {
+    console.log(vendorArray);
     return this.http.post(baseApiURL + "/GetCartItems", vendorArray);
   }
 
   getAll(): Observable<any> {
     return of(this.cookieService.getAll());
+  }
+
+  removeItem(vendor) {
+    this.cookieService.delete(vendor);
   }
 }

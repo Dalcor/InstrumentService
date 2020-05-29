@@ -13,14 +13,14 @@ export class FilterPipe implements PipeTransform {
       if (isAnd) {
         return items.filter(item =>
             filterKeys.reduce((acc1, keyName) =>
-                (acc1 && checkedItems.reduce((acc2, checkedItem) => acc2 && new RegExp(item[keyName], 'gi').test(checkedItem.value) || checkedItem.value === "", true))
+                (acc1 && checkedItems.reduce((acc2, checkedItem) => acc2 && new RegExp(item[keyName], 'gi').test(checkedItem.id) || checkedItem.id === "", true))
               , true)
               );
       } else {
         return items.filter(item => {
           return filterKeys.some((keyName) => {
             return checkedItems.some((checkedItem) => {
-              return new RegExp(item[keyName], 'gi').test(checkedItem.value) || checkedItem.value === "";
+              return new RegExp(item[keyName], 'gi').test(checkedItem.id) || checkedItem.id === "";
             });
           });
         });

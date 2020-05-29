@@ -1,16 +1,14 @@
 <div class="tool-container content">
     <div class="bread-crumbs">
-        <ul>
+        <ul *ngIf="categoryTools && item">
             <li>
                 <a routerLink="">Главная</a>
             </li>
-            <li>
-                <a [routerLink]="['/' + detail , tool ]">{{ tool }}</a>
-
+            <li >
+                <a [routerLink]="['/' + categoryTools.InstrumentCatalog[0].name , categoryTools.InstrumentCatalogDetail[0].name]">{{ categoryTools.InstrumentCatalogDetail[0].name }}</a>
             </li>
             <li>
-                <a [routerLink]="['/' + detail , tool, vendor ]">{{ item.name }}</a>
-                
+                <a [routerLink]="['/' + categoryTools.InstrumentCatalog[0].name , categoryTools.InstrumentCatalogDetail[0].name, item.vendor_code ]">{{ item.name }}</a>
             </li>
         </ul>
     </div>
