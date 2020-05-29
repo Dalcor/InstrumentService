@@ -64,7 +64,7 @@ class ConcreteTool(generics.ListAPIView):
 
 
     def get_queryset(self):
-        queryset = Tools.objects.get(vendor_code = self.kwargs['vendor'])
+        queryset = Tools.objects.filter(vendor_code = self.kwargs['vendor'])
         return queryset
 
 
