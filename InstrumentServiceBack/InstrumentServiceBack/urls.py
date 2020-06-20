@@ -18,7 +18,11 @@ from django.urls import path, include, re_path
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from InstrumentServiceBack.settings import base as settings
-urlpatterns = [
+
+urlpatterns = []
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [
     path('admin/', admin.site.urls),
     path('api/', include('index.urls')),
     # path('api/', include('index.urls')),
@@ -31,5 +35,4 @@ urlpatterns = [
 ]
 
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns += staticfiles_urlpatterns()

@@ -25,38 +25,28 @@ class SlidersList(generics.ListAPIView):
     queryset = Sliders.objects.all()
     serializer_class = SlidersSerializer
 
-def tools_filter(queryset, request, *args, **kwargs):
-    instrument = InstrumentCatalog.objects.get(name = kwargs['instrument'])
-    detail = InstrumentCatalogDetail.objects.get(name = kwargs['detail'])
-    queryset = queryset.filter(instrument = instrument, detail = detail)
-
-    return queryset
-
-def catalog_filter(queryset, request, *args, **kwargs):
-    queryset = queryset.filter(name = kwargs['instrument'])
-
-    return queryset
-
-def detail_filter(queryset, request, *args, **kwargs):
-    queryset = queryset.filter(name = kwargs['detail'])
-    return queryset
-
+#
 
 class ToolsList(ObjectMultipleModelAPIView):
-    # serializer_class = ToolsSerializer
-    querylist = [
-        {'queryset': Tools.objects.all(), 'serializer_class': ToolsSerializer, 'filter_fn': tools_filter},
-        {'queryset': InstrumentCatalog.objects.all(), 'serializer_class': InstrumentCatalogSerializer,  'filter_fn': catalog_filter },
-        {'queryset': InstrumentCatalogDetail.objects.all(), 'serializer_class': InstrumentCatalogDetailSerializer,  'filter_fn': detail_filter },
-    ]
+
+    def get_querylist(self):
+        filterTagArr = []
+        instrument = InstrumentCatalog.objects.get(name = self.kwargs['instrument'])
+        detail = InstrumentCatalogDetail.objects.get(name = self.kwargs['detail'])
+        toolsQueryset = Tools.objects.filter(instrument = instrument, detail = detail)
+        for query in toolsQueryset:
+            filterTagArr.append(query.company)
 
 
-    # def get(self, request, instrument, detail):
-    #     serializer = ToolsSerializer(many=True)
-    #     new_serializer_data = list(self.get_queryset())
-    #     new_serializer_data.append({'dict_key': 'dict_value'})
-    #
-    #     return HttpResponse(serializer.serialize(new_serializer_data), mimetype='application/json')
+        querylist = (
+            {'queryset': toolsQueryset, 'serializer_class': ToolsSerializer},
+            {'queryset': InstrumentCatalog.objects.filter(name = instrument), 'serializer_class': InstrumentCatalogSerializer},
+            {'queryset': InstrumentCatalogDetail.objects.filter(name = detail), 'serializer_class': InstrumentCatalogDetailSerializer},
+            {'queryset': Companys.objects.filter(name__in = filterTagArr ), 'serializer_class': CompanySerializer},
+            )
+
+        return querylist
+
 
 
 class ConcreteTool(generics.ListAPIView):
