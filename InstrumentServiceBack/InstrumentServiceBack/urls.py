@@ -18,17 +18,21 @@ from django.urls import path, include, re_path
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from InstrumentServiceBack.settings import base as settings
-urlpatterns = [
+
+urlpatterns = []
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [
     path('admin/', admin.site.urls),
     path('api/', include('index.urls')),
     # path('api/', include('index.urls')),
     # Web App Entry
-    re_path(r'^$', TemplateView.as_view(template_name="index.html"), name='index'),
-    re_path(r'contacts', TemplateView.as_view(template_name="index.html"), name='index'),
-    re_path(r'(?P<instrument>.+)/(?P<detail>.+)/(?P<vendor>.+)', TemplateView.as_view(template_name="index.html"), name='index'),
-    re_path(r'(?P<instrument>.+)/(?P<detail>.+)', TemplateView.as_view(template_name="index.html"), name='index'),
+    re_path('^$', TemplateView.as_view(template_name="index.html"), name='index'),
+    re_path('contacts', TemplateView.as_view(template_name="index.html"), name='index'),
+    re_path('(?P<instrument>.+)/(?P<detail>.+)/(?P<vendor>.+)', TemplateView.as_view(template_name="index.html"), name='index'),
+    re_path('(?P<instrument>.+)/(?P<detail>.+)', TemplateView.as_view(template_name="index.html"), name='index'),
+
 ]
 
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns += staticfiles_urlpatterns()
