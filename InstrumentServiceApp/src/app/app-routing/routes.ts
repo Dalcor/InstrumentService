@@ -6,6 +6,7 @@ import { ContactsComponent } from '../contacts/contacts.component';
 import { DetailsComponent } from '../details/details.component';
 import { DetailComponent } from '../detail/detail.component';
 import { CartComponent } from '../cart/cart.component';
+import { CheckoutComponent } from '../checkout/checkout.component';
 
 
 
@@ -16,5 +17,6 @@ export const routes: Routes = [
     {path: 'details', redirectTo: '', pathMatch: 'full'},
     {path: ':tool/:detail/:vendor', component: DetailComponent},
     {path: 'contacts', component: ContactsComponent},
-    {path: 'cart', component: CartComponent}
+    {path: 'cart', component: CartComponent},
+    {path: 'checkout', component: CheckoutComponent}
 ]

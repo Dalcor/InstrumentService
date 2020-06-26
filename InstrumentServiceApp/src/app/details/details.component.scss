@@ -8,7 +8,6 @@
         justify-content: space-between;
         .filter {
             width: 26%;
-            
             border: 1px solid black;
         }
         .details {
@@ -53,7 +52,10 @@
                         display: flex;
                         opacity: 0;
                         padding: 18px 0;
-                        
+                        form {
+                            width: 100%;
+                            display: flex;
+                        }
                         .amount {
                             display: flex;
                             width: 94px;

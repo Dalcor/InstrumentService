@@ -33,7 +33,7 @@ export class CatalogComponent implements OnInit {
     this.toolService.getTools().subscribe(data => {
       this.catalogItems = data;
       this.selectedItem = this.catalogItems[0].id;
-      this.selectedItemName = this.catalogItems[0].name.replace(' ', '-');
+      this.selectedItemName = this.catalogItems[0].name;
     });
 
     this.toolService.getToolDetails().subscribe(data => {

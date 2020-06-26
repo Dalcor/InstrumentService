@@ -33,6 +33,7 @@ import { DetailComponent } from './detail/detail.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { CartComponent } from './cart/cart.component';
 import { FilterPipe } from '../pipes/filter.pipe';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { FilterPipe } from '../pipes/filter.pipe';
     DetailComponent,
     CatalogComponent,
     CartComponent,
-    FilterPipe
+    FilterPipe,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
