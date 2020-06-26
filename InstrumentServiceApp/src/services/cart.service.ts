@@ -10,6 +10,7 @@ import { baseApiURL } from '../shared/baseapiurl';
   providedIn: 'root'
 })
 export class CartService {
+  
   constructor(
     private cookieService: CookieService,
     private toolService: ToolService,
@@ -19,8 +20,9 @@ export class CartService {
     this.cookieService.set(vendor, amount);
   }
 
+  
+
   getCartItems(vendorArray): Observable<any> {
-    console.log(vendorArray);
     return this.http.post(baseApiURL + "/GetCartItems", vendorArray);
   }
 
@@ -31,4 +33,5 @@ export class CartService {
   removeItem(vendor) {
     this.cookieService.delete(vendor);
   }
+
 }
