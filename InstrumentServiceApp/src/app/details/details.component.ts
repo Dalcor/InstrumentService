@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { FilterPipe } from '../../pipes/filter.pipe';
 import { CartService } from 'src/services/cart.service';
+import { Options } from 'ng5-slider';
 
 @Component({
   selector: 'app-details',
@@ -22,13 +23,19 @@ export class DetailsComponent implements OnInit {
   allowedCharRegExp: RegExp = /[0-9]/;
   newValue: any;
   names: any;
-  filterItems: Array<any>;
+  filterItems: any;
 
   values: any;
   valuesArray: Array<any>;
   items: any;
   keyValueArray: any;
 
+  minValue: number = 50;
+  maxValue: number = 700;
+  options: Options = {
+    floor: 0,
+    ceil: 1000
+  }
 
   constructor(private toolService: ToolService,
     private activateRoute: ActivatedRoute,
@@ -42,11 +49,11 @@ export class DetailsComponent implements OnInit {
     this.activateRoute.params.pipe(switchMap((params: Params) => {return this.toolService.getCategoryTools(params['tool'],params['detail'])}))
     .subscribe(items => {
       this.categoryTools = items;
-      console.log(this.categoryTools.InstrumentCatalog);
+      this.filterItems = Object.values(this.categoryTools.Companys);
     });
-    this.toolService.GetFilterTags().subscribe(
-      data => {this.filterItems = Object.values(data);
-      console.log(this.filterItems)});  
+    // this.toolService.GetFilterTags().subscribe(
+    //   data => {this.filterItems = Object.values(data);
+    //   console.log(this.filterItems)});  
   }
 
   
@@ -64,16 +71,11 @@ export class DetailsComponent implements OnInit {
   }
 
   onPaste(ev: ClipboardEvent) {
-    // this.newValue = ev.clipboardData.getData('text');
-    // console.log(this.newValue);
-    // if (!this.allowedRegExp.test(this.newValue)) {
       ev.stopPropagation();
       return false;
-    // }
   }
 
   onInput(ev) {
-    // return this.allowedCharRegExp.test(ev.key);
     ev.stopPropagation();
     return false;
   }
@@ -85,28 +87,5 @@ export class DetailsComponent implements OnInit {
   toCart(ev, vendor) {
     this.amount = ev.target.parentElement.previousElementSibling.querySelectorAll('input')[0].value;
     this.cartService.setItem(vendor, this.amount);
-  }
-
-  // focusOut(ev, vendor) {
-  //   this.cartService.getAll()
-  //   .subscribe(values => {this.values = values; 
-  //   this.valuesArray = Object.keys(this.values);
-  //   this.cartService.getCartItems(this.valuesArray)
-  //   .subscribe(items => {this.items = items;
-  //         for(let item in items) {
-  //             if(items[item].vendor_code === vendor && +ev.target.value > items[item].amount) {
-  //                 ev.target.value = items[item].amount;
-  //             }
-  //         }
-  //         if(ev.target.value == 0) {
-  //           ev.target.value = 1;
-  //         }
-  //   });
-
-  //   });
-
-  // }
-  focusOut(event, vendor) {
-
   }
 }

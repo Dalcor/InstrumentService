@@ -36,6 +36,9 @@ import { FilterPipe } from '../pipes/filter.pipe';
 import { CheckoutComponent } from './checkout/checkout.component';
 
 
+import { Ng5SliderModule } from 'ng5-slider';
+import { PricePipe } from '../pipes/price.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +51,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     CatalogComponent,
     CartComponent,
     FilterPipe,
-    CheckoutComponent
+    CheckoutComponent,
+    PricePipe
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     MatIconModule,
     SlickCarouselModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng5SliderModule
   ],
   providers: [
     SliderService,
