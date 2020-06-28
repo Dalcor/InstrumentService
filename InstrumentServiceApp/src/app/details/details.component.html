@@ -9,7 +9,7 @@
             </li>
         </ul>
     </div>
-    <div *ngIf="filterItems" class="details-content">
+    <div *ngIf="categoryTools" class="details-content">
         <div class="filter">
             <h2>Фільтр</h2>
             <div class="form form-inline">
@@ -20,10 +20,16 @@
                 </div>
               </div>
               <pre>Selected items: <span *ngFor="let filterItem of checked()" style="padding-right:10px;">{{ filterItem.id }}</span></pre>
+              <p>Min value: <input type="number" [(ngModel)]="minValue"></p>
+              <p>Max value: <input type="number" [(ngModel)]="maxValue"></p>
+             <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
         </div>
         <div *ngIf="categoryTools" class="details">
-            <div *ngFor="let item of categoryTools.Tools | filter: { company: ''} : checked() : false | paginate: { itemsPerPage: 9, currentPage: p}" class="item-container">
-                <div class="item">
+            <div *ngFor="let item of categoryTools.Tools | filter: { company: ''} : checked() : false | price: minValue : maxValue | paginate: { itemsPerPage: 9, currentPage: p}" class="item-container">
+                <div *ngIf="!item">
+                    <span>В даній категорії немає товарів</span>
+                </div>
+                <div *ngIf="item" class="item">
                 <a routerLink="{{ item.vendor_code }}">
                 <img src="../../assets/images/construction-and-tools.svg" alt="">
                 <div class="price"><span>₴ {{ item.price }}</span></div>
