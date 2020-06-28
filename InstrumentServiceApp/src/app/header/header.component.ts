@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output} from '@angular/core';
+import { Component, OnInit, Input, Output, HostListener} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ControlContainer } from '@angular/forms';
 import { ToolService } from '../../services/tool.service';
-import { Tool } from '../../shared/tool';
+import { Router, RoutesRecognized } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +11,6 @@ import { Tool } from '../../shared/tool';
 export class HeaderComponent implements OnInit {
 
   @Input() selectedItem: number;
- 
-
 
   searchForm: FormGroup;
   catalogItems: any;
@@ -20,7 +18,13 @@ export class HeaderComponent implements OnInit {
   details: any;
 
   constructor(private fb: FormBuilder,
-    private toolService: ToolService) {
+    private toolService: ToolService,
+    private router: Router) {
+      this.router.events.subscribe(event => {
+        if(event instanceof RoutesRecognized) {
+          this.show = false;
+        }
+      })
     this.createForm();
    }
 
@@ -48,8 +52,11 @@ export class HeaderComponent implements OnInit {
     console.log(this.show);
   }
 
-  hideCatalog() {
-    this.show = false;
+  
+  
+
+  @HostListener('hashchange') hideCatalog() {
+    
   }
 
 } 

@@ -32,7 +32,7 @@
                         <ng-container *ngFor="let detail of details">
                             <ng-container *ngFor="let id of detail.instruments_id">
                             <li *ngIf="id==item.id">
-                                <a [routerLink]="[item.name , detail.name ]" (click)="hideCatalog()">
+                                <a [routerLink]="[item.name , detail.name ]">
                                     <div>{{ detail.name }}</div>
                                 </a>
                             </li>
@@ -46,13 +46,13 @@
         </div>
         <nav>
             <ul>
-                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Головна</a></li>
-                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Аксесуари</a></li>
-                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Сервіс</a></li>
-                <li><a routerLink="/contacts" routerLinkActive="active" (click)="hideCatalog()"> Акції</a></li>
-                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Прокат</a></li>
-                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Про нас</a></li>
-                <li><a routerLink="/" routerLinkActive="active" (click)="hideCatalog()"> Контакти</a></li>
+                <li><a routerLink="/" routerLinkActive="active"> Головна</a></li>
+                <li><a routerLink="/" routerLinkActive="active"> Аксесуари</a></li>
+                <li><a routerLink="/" routerLinkActive="active"> Сервіс</a></li>
+                <li><a routerLink="/contacts" routerLinkActive="active"> Акції</a></li>
+                <li><a routerLink="/" routerLinkActive="active"> Прокат</a></li>
+                <li><a routerLink="/" routerLinkActive="active"> Про нас</a></li>
+                <li><a routerLink="/" routerLinkActive="active"> Контакти</a></li>
             </ul>
         </nav>
         <span class="flex-spacer"></span>
