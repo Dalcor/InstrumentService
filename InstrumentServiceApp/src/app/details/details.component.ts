@@ -51,9 +51,6 @@ export class DetailsComponent implements OnInit {
       this.categoryTools = items;
       this.filterItems = Object.values(this.categoryTools.Companys);
     });
-    // this.toolService.GetFilterTags().subscribe(
-    //   data => {this.filterItems = Object.values(data);
-    //   console.log(this.filterItems)});  
   }
 
   
