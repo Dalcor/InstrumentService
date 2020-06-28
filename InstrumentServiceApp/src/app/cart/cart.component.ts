@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
   allowedRegExp: RegExp = /^[0-9]+$/;
   allowedCharRegExp: RegExp = /[0-9]/;
   newValue: any;
+  test: any;
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {

@@ -4,7 +4,7 @@ import { ToolService } from 'src/services/tool.service';
 import { baseURL } from '../../shared/baseurl';
 import { Params, ActivatedRoute} from '@angular/router';
 import { Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, throttleTime } from 'rxjs/operators';
 import { FilterPipe } from '../../pipes/filter.pipe';
 import { CartService } from 'src/services/cart.service';
 import { Options } from 'ng5-slider';
