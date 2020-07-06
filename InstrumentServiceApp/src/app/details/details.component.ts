@@ -53,8 +53,6 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  
-
   removeOne(ev) {
     if(ev.target.nextElementSibling.value > 1) {
       ev.target.nextElementSibling.value -= 1;

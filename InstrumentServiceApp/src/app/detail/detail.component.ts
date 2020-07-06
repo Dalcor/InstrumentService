@@ -69,9 +69,11 @@ export class DetailComponent implements OnInit {
     return this.allowedCharRegExp.test(ev.key);
   }
 
-  toCart(vendor, amount) {
-    this.cartService.setItem(vendor, amount);
+  toCart(vendor, ev) {
+    this.amount = ev.target.parentElement.previousElementSibling.querySelectorAll('input')[0].value;
+    this.cartService.setItem(vendor, this.amount);
   }
 
+  
   
 }
