@@ -4,7 +4,9 @@ from .models import InstrumentCatalog, InstrumentCatalogDetail, Sliders, Tools
 from .serializers import *
 from rest_framework.response import Response
 from drf_multiple_model.views import ObjectMultipleModelAPIView
-
+from django.http import Http404
+from rest_framework import status
+from rest_framework.response import Response
 
 class InstrumentCatalogList(generics.ListAPIView):
     queryset = InstrumentCatalog.objects.all()
@@ -31,11 +33,14 @@ class ToolsList(ObjectMultipleModelAPIView):
 
     def get_querylist(self):
         filterTagArr = []
-        instrument = InstrumentCatalog.objects.get(name = self.kwargs['instrument'])
-        detail = InstrumentCatalogDetail.objects.get(name = self.kwargs['detail'])
+        try:
+            instrument = InstrumentCatalog.objects.get(name = self.kwargs['instrument'])
+            detail = InstrumentCatalogDetail.objects.get(name = self.kwargs['detail'])
+        except:
+            raise Http404()
         toolsQueryset = Tools.objects.filter(instrument = instrument, detail = detail)
         for query in toolsQueryset:
-            filterTagArr.append(query.company)
+            filterTagArr.append(query.company)x
 
 
         querylist = (
@@ -54,7 +59,10 @@ class ConcreteTool(generics.ListAPIView):
 
 
     def get_queryset(self):
-        queryset = Tools.objects.filter(vendor_code = self.kwargs['vendor'])
+        try:
+            queryset = Tools.objects.filter(vendor_code = self.kwargs['vendor'])
+        except:
+            raise Http404()
         return queryset
 
 
@@ -74,6 +82,8 @@ class CartItemsList(generics.ListAPIView):
 #
 # class ConcreteTool(generics.ListAPIView):
 #     serializers = ToolsSerializer
+
+
 
 
 
