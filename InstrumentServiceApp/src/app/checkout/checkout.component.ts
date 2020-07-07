@@ -76,6 +76,7 @@ export class CheckoutComponent implements OnInit {
       telnum: '',
       email: ''
     });
+    this.submitted = false
   }
 
 }

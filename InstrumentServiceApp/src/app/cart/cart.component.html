@@ -1,11 +1,14 @@
 <div *ngIf="!values">Корзина пуста!</div>
 <div>
 <div class="cart-table-header">
-    <div>Продукти</div>
-    <div>Ціна</div>
-    <div>Кількість</div>
-    <div>Сума</div>
-
+    <div class="cart-names">
+        <div>Продукти</div>
+    </div>
+    <div class="cart-items-info">
+        <div>Ціна</div>
+        <div>Кількість</div>
+        <div>Сума</div>
+    </div>
 </div>
 <div *ngFor="let item of items" class="cart-table-header">
         <div><div><button (click)="removeFromCart(item.vendor_code)">×</button></div> {{item.name}}</div>
