@@ -4,8 +4,10 @@ import { ToolService } from 'src/services/tool.service';
 import { baseURL } from '../../shared/baseurl';
 import { Params, ActivatedRoute} from '@angular/router';
 import { Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, throttleTime } from 'rxjs/operators';
 import { FilterPipe } from '../../pipes/filter.pipe';
+import { CartService } from 'src/services/cart.service';
+import { Options } from 'ng5-slider';
 
 @Component({
   selector: 'app-details',
@@ -16,14 +18,28 @@ export class DetailsComponent implements OnInit {
   tool: string;
   detail: string;
   categoryTools: any;
+  amount: number;
   allowedRegExp: RegExp = /^[0-9]+$/;
   allowedCharRegExp: RegExp = /[0-9]/;
   newValue: any;
   names: any;
-  filterItems: Array<any>;
+  filterItems: any;
+
+  values: any;
+  valuesArray: Array<any>;
+  items: any;
+  keyValueArray: any;
+
+  minValue: number = 50;
+  maxValue: number = 700;
+  options: Options = {
+    floor: 0,
+    ceil: 1000
+  }
 
   constructor(private toolService: ToolService,
-    private activateRoute: ActivatedRoute) {
+    private activateRoute: ActivatedRoute,
+    private cartService: CartService) {
 
      }
   id: number;
@@ -33,14 +49,9 @@ export class DetailsComponent implements OnInit {
     this.activateRoute.params.pipe(switchMap((params: Params) => {return this.toolService.getCategoryTools(params['tool'],params['detail'])}))
     .subscribe(items => {
       this.categoryTools = items;
-      console.log(this.categoryTools.InstrumentCatalog);
+      this.filterItems = Object.values(this.categoryTools.Companys);
     });
-    this.toolService.GetFilterTags().subscribe(
-      data => {this.filterItems = Object.values(data);
-      console.log(this.filterItems)});  
   }
-
-  
 
   removeOne(ev) {
     if(ev.target.nextElementSibling.value > 1) {
@@ -55,21 +66,21 @@ export class DetailsComponent implements OnInit {
   }
 
   onPaste(ev: ClipboardEvent) {
-    this.newValue = ev.clipboardData.getData('text');
-    console.log(this.newValue);
-    if (!this.allowedRegExp.test(this.newValue)) {
       ev.stopPropagation();
       return false;
-    }
   }
 
   onInput(ev) {
-    return this.allowedCharRegExp.test(ev.key);
+    ev.stopPropagation();
+    return false;
   }
 
   checked() {
     return this.filterItems.filter(item => { return item.checked; });
   }
 
-  
+  toCart(ev, vendor) {
+    this.amount = ev.target.parentElement.previousElementSibling.querySelectorAll('input')[0].value;
+    this.cartService.setItem(vendor, this.amount);
+  }
 }

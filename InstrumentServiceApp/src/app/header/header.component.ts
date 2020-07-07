@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output} from '@angular/core';
+import { Component, OnInit, Input, Output, HostListener} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ControlContainer } from '@angular/forms';
 import { ToolService } from '../../services/tool.service';
-import { Tool } from '../../shared/tool';
+import { Router, RoutesRecognized } from '@angular/router';
+import {Cookies, CookieOptions} from '@cedx/ngx-cookies';
 
 @Component({
   selector: 'app-header',
@@ -11,16 +12,22 @@ import { Tool } from '../../shared/tool';
 export class HeaderComponent implements OnInit {
 
   @Input() selectedItem: number;
- 
-
 
   searchForm: FormGroup;
   catalogItems: any;
   show: boolean = false;
   details: any;
+  cartAmount: number;
 
   constructor(private fb: FormBuilder,
-    private toolService: ToolService) {
+    private toolService: ToolService,
+    private router: Router,
+    private _cookies: Cookies) {
+      this.router.events.subscribe(event => {
+        if(event instanceof RoutesRecognized) {
+          this.show = false;
+        }
+      })
     this.createForm();
    }
 
@@ -36,7 +43,11 @@ export class HeaderComponent implements OnInit {
     });
     this.toolService.getToolDetails().subscribe(data => {
       this.details = data;
-    }); 
+    });
+    this.cartAmount = this._cookies.length - 1;
+    this._cookies.onChanges.subscribe(() => {
+      this.cartAmount = this._cookies.length - 1;
+    });
   }
 
   onSubmit() {
@@ -47,9 +58,4 @@ export class HeaderComponent implements OnInit {
     this.show = !this.show;
     console.log(this.show);
   }
-
-  hideCatalog() {
-    this.show = false;
-  }
-
 } 
