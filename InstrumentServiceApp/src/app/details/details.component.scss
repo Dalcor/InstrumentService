@@ -58,32 +58,33 @@
                         }
                         .amount {
                             display: flex;
-                            width: 94px;
                             padding: 0 2px;
                             button {
                                 border: 1px solid #979797;
                                 background-color: transparent;
                             }
                             .desc {
+                               width: 30px;
+                               border-right: 0;
+                               padding: 0;
                                border-radius: 50% 0 0 50%;
                                -webkit-border-radius: 50% 0 0 50%;
                                -moz-border-radius: 50% 0 0 50%;
                                -ms-border-radius: 50% 0 0 50%;
                                -o-border-radius: 50% 0 0 50%;
-                               border-right: 0;
-                               width: 73px;
-                            }
+}
                             .asc {
+                                width: 30px;
+                                border-left: 0;
+                                padding: 0;
                                 border-radius: 0 50% 50% 0;
                                 -webkit-border-radius: 0 50% 50% 0;
                                 -moz-border-radius: 0 50% 50% 0;
                                 -ms-border-radius: 0 50% 50% 0;
                                 -o-border-radius: 0 50% 50% 0;
-                                border-left: 0;
-                                width: 75px;
-                            }
+}
                             input {
-                                width: 100%;
+                                width: 30px;
                                 border: 1px solid #666;
                                 border-left: 0;
                                 border-right: 0;

@@ -1,5 +1,5 @@
 <div *ngIf="!values">Корзина пуста!</div>
-<div>
+<div class="cart">
 <div class="cart-table-header">
     <div class="cart-names">
         <div>Продукти</div>
@@ -10,25 +10,29 @@
         <div>Сума</div>
     </div>
 </div>
-<div *ngFor="let item of items" class="cart-table-header">
-        <div><div><button (click)="removeFromCart(item.vendor_code)">×</button></div> {{item.name}}</div>
-        <div>{{item.price}}</div>
-
-
-        <div class="amount">
-            <button class="desc" type="button" (click)="removeOne($event, item.vendor_code)">-</button>
-            <ng-container *ngFor="let value of keyValueArray">
-                <input *ngIf="value[0] == item.vendor_code" type="text" (paste)="onPaste($event, item.vendor_code)"
-                (keypress)="onInputValidation($event)" maxlength="3" value="{{ value[1] }}"
-                (focusout)="focusOut($event, item.vendor_code)">            
-            </ng-container>
-            <button class="asc" type="button" (click)="addOne($event, item.vendor_code)">+</button>
+<div *ngFor="let item of items" class="cart-table">
+        <div class="cart-names">
+            <div class="remove-btn-container"><button (click)="removeFromCart(item.vendor_code)">×</button></div><div> {{item.name}}</div>
         </div>
 
+        <div class="cart-items-info">
+            <div>{{item.price}}</div>
+            <div>
+            <div class="amount">
+                
+                <button width="32px" class="desc" type="button" (click)="removeOne($event, item.vendor_code)">-</button>
+                <ng-container *ngFor="let value of keyValueArray">
+                    <input *ngIf="value[0] == item.vendor_code" type="text" (paste)="onPaste($event, item.vendor_code)"
+                    (keypress)="onInputValidation($event)" maxlength="3" value="{{ value[1] }}"
+                    (focusout)="focusOut($event, item.vendor_code)">            
+                </ng-container>
+                <button width="32px" class="asc" type="button" (click)="addOne($event, item.vendor_code)">+</button>
+            </div>
+            </div>
         <ng-container *ngFor="let value of keyValueArray">
             <div *ngIf="value[0] == item.vendor_code">{{ item.price*value[1] }}</div>
         </ng-container>
-        
+        </div>
 </div>
 <div class="total">
     <div>{{ totalPrice }}</div>
