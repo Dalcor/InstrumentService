@@ -3,6 +3,7 @@
 
 
 .details-container {
+    padding-bottom: 45px;
     .details-content {
         display: flex;
         justify-content: space-between;
@@ -15,13 +16,20 @@
             flex-wrap: wrap;
             position: relative;
             width: 63%;
+            .v-spacer {
+                margin-top: 45px;
+                width: 100%;
+            }
             .item:hover {
                 box-shadow: 9px 9px 12px -2px #ccc;
             }
             .item-container {
-                width: 33%;
+                width: calc(100% / 3);
                 padding: 0 16px;
+                display: flex;
+
                 .item {
+                    width: 100%;
                     button {
                         font-family: TT Norms;
                         font-style: normal;
@@ -44,12 +52,15 @@
                         color: #000;
                         
                     }
+                    .name {
+                        height: 38px;
+                        overflow: hidden;
+                    }
                     .price {
                         font-weight: 600;
                         margin-top: 6px;
                     }
                     .as {
-                        display: flex;
                         opacity: 0;
                         padding: 18px 0;
                         form {
@@ -72,7 +83,7 @@
                                -moz-border-radius: 50% 0 0 50%;
                                -ms-border-radius: 50% 0 0 50%;
                                -o-border-radius: 50% 0 0 50%;
-}
+                            }
                             .asc {
                                 width: 30px;
                                 border-left: 0;
@@ -82,7 +93,7 @@
                                 -moz-border-radius: 0 50% 50% 0;
                                 -ms-border-radius: 0 50% 50% 0;
                                 -o-border-radius: 0 50% 50% 0;
-}
+                            }
                             input {
                                 width: 30px;
                                 border: 1px solid #666;
@@ -133,7 +144,6 @@
             font-size: 16px;
             line-height: 19px;
             letter-spacing: 0.571429px;
-
             color: #000000;
         }
     }

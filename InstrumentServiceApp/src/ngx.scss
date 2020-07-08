@@ -37,7 +37,7 @@
     padding: 0 !important;
     margin: 0 !important;
     height: 100px;
-    width: 40px;
+    width: 60px;
     background-color: transparent;
     border: none !important;
 
@@ -54,7 +54,7 @@
 .ngx-pagination a,
 .ngx-pagination {
     padding: 0 !important;
-    margin:45px 0 !important;  
+    margin: 0 !important;  
 }
 
 .ngx-pagination .pagination-next,
@@ -90,8 +90,8 @@
 
 .ngx-pagination .pagination-previous.disabled::before,
 .ngx-pagination .pagination-next.disabled::after {
-    border-bottom: 4px solid grey;
-    border-left: 4px solid grey;
+    border-bottom: 4px solid grey !important;
+    border-left: 4px solid grey !important;
 }
 
 .ngx-pagination .pagination-next a::after,

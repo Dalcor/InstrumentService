@@ -16,7 +16,7 @@
         </div>
 
         <div class="cart-items-info">
-            <div>{{item.price}}</div>
+            <div>₴ {{item.price}}</div>
             <div>
             <div class="amount">
                 
@@ -30,7 +30,7 @@
             </div>
             </div>
         <ng-container *ngFor="let value of keyValueArray">
-            <div *ngIf="value[0] == item.vendor_code">{{ item.price*value[1] }}</div>
+            <div *ngIf="value[0] == item.vendor_code">₴ {{ item.price*value[1] }}</div>
         </ng-container>
         </div>
 </div>

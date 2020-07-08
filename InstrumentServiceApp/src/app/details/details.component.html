@@ -29,11 +29,14 @@
                 <div *ngIf="!item">
                     <span>В даній категорії немає товарів</span>
                 </div>
-                <div *ngIf="item" class="item">
+                <div *ngIf="item === -1">
+                    <span>За заданими фільтрами товарів немає</span>
+                </div>
+                <div *ngIf="item !== -1" class="item">
                 <a routerLink="{{ item.vendor_code }}">
                 <img src="../../assets/images/construction-and-tools.svg" alt="">
                 <div class="price"><span>₴ {{ item.price }}</span></div>
-                <div class="name"><span>{{ item.name }}</span></div></a>
+                <div class="name" title="{{ item.name }}"><span>{{ item.name }}</span></div></a>
                 <div class="as">
                     <form action="">
                     <div class="amount">
@@ -50,11 +53,13 @@
                 </div>
                 </div>
             </div>
+            <div class="v-spacer"></div>
             <div class="pagination">
             <pagination-controls
              (pageChange)="p = $event"
              previousLabel=""
-             nextLabel=""></pagination-controls>
+             nextLabel=""
+             autoHide="true"></pagination-controls>
             </div>
         </div>
         <div *ngIf="!categoryTools" class="details none">

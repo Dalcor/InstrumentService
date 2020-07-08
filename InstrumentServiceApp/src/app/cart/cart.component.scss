@@ -3,7 +3,9 @@
     margin: 40px auto;
     .cart-table-header {
         display: flex;
-        border-bottom: 1px solid black;
+        border: 1px solid #b9b9b9;
+        background-color: #fafafa;
+        font-weight: 500;
         .cart-names,
         .cart-items-info {
             width: 50%;
@@ -17,15 +19,21 @@
             display: flex;
             flex-flow: row;
             div {
+                display: flex;
+                border-left: 1px solid #b9b9b9;
                 width: calc(100% / 3);
-                text-align: center;
+                height: 52px;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 0;
             }
         }
     }
     .cart-table {
         display: flex;
-        border-bottom: 1px solid black;
-        padding: 15px 0;
+        border: 1px solid #b9b9b9;
+        border-top: 0;
+        // padding: 15px 0;
         .cart-names,
         .cart-items-info {
             width: 50%;
@@ -33,14 +41,24 @@
         .cart-names {
             display: flex;
             justify-content: flex-start;
+            align-items: center;
+            font-size: 16px;
+            color: #000;
         }
         .cart-items-info {
             display: flex;
             flex-flow: row;
+            align-items: center;
             >div {
                 width: calc(100% / 3);
                 display: flex;
                 justify-content: center;
+                border-left: 1px solid #b9b9b9;
+                height: 92px;
+                align-items: center;
+                padding: 30px 0;
+                font-size: 16px;
+                font-weight: 500;
             }
         }
         .amount {
@@ -53,6 +71,7 @@
                 background-color: transparent;
             }
             .desc {
+                font-family: TT Norms;
                 border: 1px solid #979797;
                 width: 32px;
                 border-radius: 50% 0 0 50%;
@@ -61,8 +80,11 @@
                 -moz-border-radius: 50% 0 0 50%;
                 -ms-border-radius: 50% 0 0 50%;
                 -o-border-radius: 50% 0 0 50%;
+                font-size: 16px;
+                font-weight: 500;
             }
             .asc {
+                font-family: TT Norms;
                 border: 1px solid #979797;
                 width: 32px;
                 border-radius: 0 50% 50% 0;
@@ -71,13 +93,18 @@
                 -moz-border-radius: 0 50% 50% 0;
                 -ms-border-radius: 0 50% 50% 0;
                 -o-border-radius: 0 50% 50% 0;
+                font-size: 16px;
+                font-weight: 500;
             }
             input {
                 width: 30px;
-                border: 1px solid #666;
+                font-family: TT Norms;
+                border: 1px solid #979797;
                 border-left: 0;
                 border-right: 0;
                 text-align: center;
+                font-size: 16px;
+                font-weight: 500;
             }
         }
     }
@@ -85,5 +112,6 @@
 
 .total {
     display: flex;
-    
+    justify-content: space-between;
+    margin: 30px 0;
 }
