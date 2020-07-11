@@ -43,6 +43,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 import { Ng5SliderModule } from 'ng5-slider';
 import { PricePipe } from '../pipes/price.pipe';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { PricePipe } from '../pipes/price.pipe';
     CartComponent,
     FilterPipe,
     CheckoutComponent,
-    PricePipe
+    PricePipe,
+    AboutusComponent
   ],
   imports: [
     BrowserModule,
