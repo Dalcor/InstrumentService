@@ -4,11 +4,13 @@
             <li>
                 <a routerLink="">Главная</a>
             </li>
+            <li><img src="../../assets/images/arrow-bread.svg" alt=""></li>
             <li >
                 <a [routerLink]="['/' + categoryTools.InstrumentCatalog[0].name , categoryTools.InstrumentCatalogDetail[0].name]">{{ categoryTools.InstrumentCatalogDetail[0].name }}</a>
             </li>
+            <li><img src="../../assets/images/arrow-bread.svg" alt=""></li>
             <li>
-                <a [routerLink]="['/' + categoryTools.InstrumentCatalog[0].name , categoryTools.InstrumentCatalogDetail[0].name, item.vendor_code ]">{{ item.name }}</a>
+                <a class="current-bread" [routerLink]="['/' + categoryTools.InstrumentCatalog[0].name , categoryTools.InstrumentCatalogDetail[0].name, item.vendor_code ]">{{ item.name }}</a>
             </li>
         </ul>
     </div>

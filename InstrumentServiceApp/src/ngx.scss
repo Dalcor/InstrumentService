@@ -253,3 +253,62 @@
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
   }
+
+
+  /*------------------------ng price filter-----------------------*/
+  .ng5-slider .ng5-slider-bubble {
+    display: none !important;
+  }
+
+  .ng5-slider.animate .ng5-slider-pointer {
+
+    -webkit-transition: all linear .1s !important;
+    transition: all linear .1s !important;
+    -moz-transition: all linear .1s !important;
+    -ms-transition: all linear .1s !important;
+    -o-transition: all linear .1s !important;
+}
+
+.ng5-slider.animate .ng5-slider-pointer:focus {
+  outline: none;
+}
+
+.ng5-slider.animate .ng5-slider-bar-wrapper {
+    -webkit-transition: all linear .1s !important;
+    -moz-transition: all linear .1s !important;
+    transition: all linear .1s !important;
+    -ms-transition: all linear .1s !important;
+    -o-transition: all linear .1s !important;
+}
+
+.ng5-slider .ng5-slider-pointer {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  top: -14px;
+  background-color: $primary-yellow !important;
+  z-index: 3;
+  border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -ms-border-radius: 50% !important;
+  -o-border-radius: 50% !important;
+  border: 7px solid black;
+}
+
+.ng5-slider .ng5-slider-pointer:after {
+  display: none !important;
+}
+
+
+
+.ng5-slider .ng5-slider-bar {
+  background: #000000 !important;
+}
+
+.ng5-slider .ng5-slider-selection {
+  z-index: 2;
+  background: $primary-yellow !important;
+  border-radius: 2px;
+}
+  /*------------------------ng price filter-----------------------*/
