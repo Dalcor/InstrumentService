@@ -34,10 +34,6 @@ export class DetailComponent implements OnInit {
     .subscribe(items => {
       this.categoryTools = items;
     });
-    this.detail = location.href.replace(baseURL, '')
-    .split("/")[0].replace( /%20/g , ' ');
-    this.tool = location.href.replace(baseURL, '')
-    .split("/")[1].replace( /%20/g , ' ');
   }
 
   removeOne(ev) {
@@ -72,8 +68,5 @@ export class DetailComponent implements OnInit {
   toCart(vendor, ev) {
     this.amount = ev.target.parentElement.previousElementSibling.querySelectorAll('input')[0].value;
     this.cartService.setItem(vendor, this.amount);
-  }
-
-  
-  
+  } 
 }

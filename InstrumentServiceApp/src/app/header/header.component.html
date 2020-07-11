@@ -47,13 +47,20 @@
         </div>
         <nav>
             <ul>
-                <li><a routerLink="/" routerLinkActive="active"> Головна</a></li>
-                <li><a routerLink="/" routerLinkActive="active"> Аксесуари</a></li>
-                <li><a routerLink="/" routerLinkActive="active"> Сервіс</a></li>
-                <li><a routerLink="/contacts" routerLinkActive="active"> Акції</a></li>
-                <li><a routerLink="/" routerLinkActive="active"> Прокат</a></li>
-                <li><a routerLink="/" routerLinkActive="active"> Про нас</a></li>
-                <li><a routerLink="/" routerLinkActive="active"> Контакти</a></li>
+                <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                    true}" (mouseenter)="mouseEnter($event)" (mouseleave) ="mouseLeave($event)"> Головна</a></li>
+                <li><a routerLink="/accessories" routerLinkActive="active"
+                     (mouseenter)="mouseEnter($event)" (mouseleave) ="mouseLeave($event)"> Аксесуари</a></li>
+                <li><a routerLink="/service" routerLinkActive="active"
+                    (mouseenter)="mouseEnter($event)" (mouseleave) ="mouseLeave($event)"> Сервіс</a></li>
+                <li><a routerLink="/actions" routerLinkActive="active"
+                    (mouseenter)="mouseEnter($event)" (mouseleave) ="mouseLeave($event)"> Акції</a></li>
+                <li><a routerLink="/hire" routerLinkActive="active"
+                    (mouseenter)="mouseEnter($event)" (mouseleave) ="mouseLeave($event)"> Прокат</a></li>
+                <li><a routerLink="/aboutus" routerLinkActive="active"
+                    (mouseenter)="mouseEnter($event)" (mouseleave) ="mouseLeave($event)"> Про нас</a></li>
+                <li><a routerLink="/contacts" routerLinkActive="active"
+                    (mouseenter)="mouseEnter($event)" (mouseleave) ="mouseLeave($event)"> Контакти</a></li>
             </ul>
         </nav>
         <span class="flex-spacer"></span>

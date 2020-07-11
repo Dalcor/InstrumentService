@@ -4,8 +4,9 @@
             <li>
                 <a routerLink="">Главная</a>
             </li>
+            <li><img src="../../assets/images/arrow-bread.svg" alt=""></li>
             <li *ngIf="categoryTools">
-                <a [routerLink]="['/' + categoryTools.InstrumentCatalog[0].name , categoryTools.InstrumentCatalogDetail[0].name ]">{{ categoryTools.InstrumentCatalogDetail[0].name }}</a>
+                <a class="current-bread" [routerLink]="['/' + categoryTools.InstrumentCatalog[0].name , categoryTools.InstrumentCatalogDetail[0].name ]">{{ categoryTools.InstrumentCatalogDetail[0].name }}</a>
             </li>
         </ul>
     </div>
@@ -13,27 +14,32 @@
         <div class="filter">
             <h2>Фільтр</h2>
             <div class="form form-inline">
-                <div *ngFor="let filterItem of filterItems" class="form-check" style="padding-right:20px;">
-                  <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" [(ngModel)]="filterItem.checked" [value]="filterItem.id"> {{filterItem.name}}
-                  </label>
+                <div *ngFor="let filterItem of filterItems; let i = index" class="form-check" style="padding-right:20px;">
+                    <input id="input{{ i }}" type="checkbox" (change)="onFilterChanged()" class="form-check-input" [(ngModel)]="filterItem.checked" [value]="filterItem.id"> 
+                    <label for="input{{ i }}" class="form-check-label">{{filterItem.name}}</label>
                 </div>
               </div>
-              <pre>Selected items: <span *ngFor="let filterItem of checked()" style="padding-right:10px;">{{ filterItem.id }}</span></pre>
-              <p>Min value: <input type="number" [(ngModel)]="minValue"></p>
-              <p>Max value: <input type="number" [(ngModel)]="maxValue"></p>
-             <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+              <!-- <pre>Selected items: <span *ngFor="let filterItem of checked()" style="padding-right:10px;">{{ filterItem.id }}</span></pre> -->
+            <h2>Ціна</h2>  
+             <ng5-slider (valueChange)="onFilterChanged()" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+             <div class="minMaxValue">
+                <input type="number" [(ngModel)]="minValue">
+                <input type="number" [(ngModel)]="maxValue">
+             </div>
         </div>
         <div *ngIf="categoryTools" class="details">
             <div *ngFor="let item of categoryTools.Tools | filter: { company: ''} : checked() : false | price: minValue : maxValue | paginate: { itemsPerPage: 9, currentPage: p}" class="item-container">
                 <div *ngIf="!item">
                     <span>В даній категорії немає товарів</span>
                 </div>
-                <div *ngIf="item" class="item">
+                <div *ngIf="item === -1">
+                    <span>За заданими фільтрами товарів немає</span>
+                </div>
+                <div *ngIf="item !== -1" class="item">
                 <a routerLink="{{ item.vendor_code }}">
                 <img src="../../assets/images/construction-and-tools.svg" alt="">
                 <div class="price"><span>₴ {{ item.price }}</span></div>
-                <div class="name"><span>{{ item.name }}</span></div></a>
+                <div class="name" title="{{ item.name }}"><span>{{ item.name }}</span></div></a>
                 <div class="as">
                     <form action="">
                     <div class="amount">
@@ -50,11 +56,14 @@
                 </div>
                 </div>
             </div>
+            <div class="v-spacer"></div>
             <div class="pagination">
             <pagination-controls
              (pageChange)="p = $event"
              previousLabel=""
-             nextLabel=""></pagination-controls>
+             nextLabel=""
+             autoHide="true"
+             maxSize="6"></pagination-controls>
             </div>
         </div>
         <div *ngIf="!categoryTools" class="details none">

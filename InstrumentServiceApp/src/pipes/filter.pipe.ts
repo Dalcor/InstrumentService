@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
   transform(items: any, filter: any, filterItems: Array<any>, isAnd: boolean): any {
-    console.log('Filtering ..');
+    
     if (filter && Array.isArray(items) && filterItems) {
       let filterKeys = Object.keys(filter);
       let checkedItems = filterItems.filter(item => { return item.checked; });

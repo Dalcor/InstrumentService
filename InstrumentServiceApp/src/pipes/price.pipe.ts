@@ -7,9 +7,17 @@ import { max, min } from 'rxjs/operators';
 export class PricePipe implements PipeTransform {
 
   transform(items, minValue, maxValue) {
-    return items.filter(item => {
-         return item.price <= maxValue && item.price >= minValue; 
-    });
-  }
 
+    let result = items.filter(item => {      
+      if(item.lenght == 0) {
+        return [-1];
+      } else {
+       return item.price <= maxValue && item.price >= minValue; 
+      }
+    });
+    if(Object.keys(result).length === 0) {
+      return [-1];
+    }
+    return result;
+  }
 }
