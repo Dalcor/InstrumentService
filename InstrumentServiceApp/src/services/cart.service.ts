@@ -30,8 +30,28 @@ export class CartService {
     return this.http.post(baseApiURL + "/GetCartItems", vendorArray);
   }
 
+  getCartCount() {
+    let all = this.cookieService.getAll();
+    let cartCount = 0;
+    for(let i in all) {
+      if(i.indexOf("cart-") !== -1) {
+        cartCount++;
+      }
+    }
+    return cartCount;
+  }
+
   getAll(): Observable<any> {
-    return of(this.cookieService.getAll());
+    let all = this.cookieService.getAll();
+    let cart = {};
+    for(let i in all) {
+      if(i.indexOf("cart-") === -1) {
+        delete all[i];
+      } else {
+        cart[i.replace("cart-","")] = all[i]; 
+      }
+    }
+    return of(cart);
   }
 
   getKeys():Observable<any> {
