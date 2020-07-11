@@ -67,7 +67,7 @@ export class CartService {
   }
 
   removeItem(vendor) {
-    this.cookie.remove(vendor);
+    this.cookie.remove("cart-" + vendor);
   }
 
 }
