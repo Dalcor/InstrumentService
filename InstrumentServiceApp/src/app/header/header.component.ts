@@ -2,7 +2,8 @@ import { Component, OnInit, Input, Output, HostListener} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ControlContainer } from '@angular/forms';
 import { ToolService } from '../../services/tool.service';
 import { Router, RoutesRecognized } from '@angular/router';
-import {Cookies, CookieOptions} from '@cedx/ngx-cookies';
+import { CartService } from 'src/services/cart.service';
+import { Cookies } from '@cedx/ngx-cookies';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private toolService: ToolService,
     private router: Router,
+    private cartService: CartService,
     private _cookies: Cookies) {
       this.router.events.subscribe(event => {
         if(event instanceof RoutesRecognized) {
@@ -44,9 +46,9 @@ export class HeaderComponent implements OnInit {
     this.toolService.getToolDetails().subscribe(data => {
       this.details = data;
     });
-    this.cartAmount = this._cookies.length - 1;
+    this.cartAmount = this.cartService.getCartCount();
     this._cookies.onChanges.subscribe(() => {
-      this.cartAmount = this._cookies.length - 1;
+      this.cartAmount = this.cartService.getCartCount();
     });
   }
 
