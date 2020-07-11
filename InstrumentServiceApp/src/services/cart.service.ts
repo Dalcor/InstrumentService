@@ -19,7 +19,7 @@ export class CartService {
     private http: HttpClient) { }
 
   setItem(vendor, amount) {
-    this.cookie.set(vendor, amount, new CookieOptions({
+    this.cookie.set("cart-" + vendor, amount, new CookieOptions({
       path: '/'
    }));
   }
