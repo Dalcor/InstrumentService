@@ -34,13 +34,13 @@ class ToolsList(ObjectMultipleModelAPIView):
     def get_querylist(self):
         filterTagArr = []
         try:
-            instrument = InstrumentCatalog.objects.get(name = self.kwargs['instrument'])
-            detail = InstrumentCatalogDetail.objects.get(name = self.kwargs['detail'])
+            instrument = InstrumentCatalog.objects.get(name_link = self.kwargs['instrument'])
+            detail = InstrumentCatalogDetail.objects.get(name_link = self.kwargs['detail'])
         except:
             raise Http404()
         toolsQueryset = Tools.objects.filter(instrument = instrument, detail = detail)
         for query in toolsQueryset:
-            filterTagArr.append(query.company)x
+            filterTagArr.append(query.company)
 
 
         querylist = (
@@ -82,9 +82,6 @@ class CartItemsList(generics.ListAPIView):
 #
 # class ConcreteTool(generics.ListAPIView):
 #     serializers = ToolsSerializer
-
-
-
 
 
 class FilterTagList(generics.ListAPIView):

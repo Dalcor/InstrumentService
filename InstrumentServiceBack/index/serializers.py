@@ -22,7 +22,6 @@ class InstrumentCatalogDetailSerializer(serializers.ModelSerializer):
         queryset = InstrumentCatalogDetailIntermediary.objects.filter(detail = obj.id)
         for query in queryset:
             instruments_id_array.append(query.instrument_id)
-
         return instruments_id_array
 
     #   def get_media_path()
@@ -51,13 +50,17 @@ class ToolsSerializer(serializers.ModelSerializer):
         model = Tools
         fields = ('id','name','vendor_code', 'price', 'wholesale_var', 'media_path',
             'amount', 'instrument', 'detail', 'description', 'company')
+# def get_lineup_name(self, obj):
+#     lineup_array = []
+#     queryset = ToolsLineup.objects.filter(tool = obj.id)
+
+
+class ToolsPriceSerializer(serializers.Serializer):
+    min_price = serializers.DecimalField(max_digits=10, decimal_places=2)
+    max_price = serializers.DecimalField(max_digits=10, decimal_places=2)
 
 
 
-
-    # def get_lineup_name(self, obj):
-    #     lineup_array = []
-    #     queryset = ToolsLineup.objects.filter(tool = obj.id)
 
 
 class CompanySerializer(serializers.ModelSerializer):
