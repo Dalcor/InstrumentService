@@ -31,7 +31,6 @@ export class CheckoutService {
     
     this.order.checkout = checkoutInfo;
     this.cartService.getAll().subscribe(items => this.order.cart = items);
-    console.log(this.order);
     return this.http.post(baseApiURL + '/order', this.order, httpOptions);
   }
 }

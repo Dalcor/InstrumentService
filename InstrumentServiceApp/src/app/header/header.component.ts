@@ -58,4 +58,14 @@ export class HeaderComponent implements OnInit {
     this.show = !this.show;
     console.log(this.show);
   }
+
+  mouseEnter(ev) {
+    console.log(ev.target);
+    ev.target.classList.add("activeLink");
+  }
+
+  mouseLeave(ev) {
+    ev.target.classList.remove("activeLink");
+  }
+
 } 

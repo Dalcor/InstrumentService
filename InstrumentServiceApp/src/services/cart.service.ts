@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { ToolService } from './tool.service';
 import { baseApiURL } from '../shared/baseapiurl';
-import {Cookies} from '@cedx/ngx-cookies';
+import { Cookies, CookieOptions } from '@cedx/ngx-cookies';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,9 @@ export class CartService {
     private http: HttpClient) { }
 
   setItem(vendor, amount) {
-    this.cookie.set(vendor, amount);
+    this.cookie.set("cart-" + vendor, amount, new CookieOptions({
+      path: '/'
+   }));
   }
 
   

@@ -83,4 +83,8 @@ export class DetailsComponent implements OnInit {
     this.amount = ev.target.parentElement.previousElementSibling.querySelectorAll('input')[0].value;
     this.cartService.setItem(vendor, this.amount);
   }
+
+  onFilterChanged() {
+    this.p = 1;
+  }
 }

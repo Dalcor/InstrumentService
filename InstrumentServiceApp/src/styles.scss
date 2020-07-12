@@ -5,9 +5,12 @@
 
 html, body { height: 100%; }
 body {
-   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+   margin: 0;
+   font-family: TT Norms;
+   font-style: normal;
    overflow-y: scroll;
 }
+
 *{
   box-sizing: border-box;
 }
@@ -45,7 +48,7 @@ h2 {
   font-family: TT Norms;
   font-style: normal;
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 30px;
   line-height: 35px;
   letter-spacing: 1.07143px;
@@ -56,13 +59,25 @@ h2 {
       display: flex;
       justify-content: flex-start;
       list-style: none;
+      padding: 0;
+      margin-top: 20px;
       li {
         margin-right: 10px;
-        :after {
-          content: ' > '
+        display: flex;
+        align-items: center;
+        img {
+          width: 10px;
         }
           a{
               color: black;
+              font-size: 16px;
+              line-height: 19px;
+              text-align: center;
+              letter-spacing: 0.571429px;
+              text-decoration: none;
+          }
+          .current-bread {
+            font-weight: 500;
           }
       }
   }
