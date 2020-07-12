@@ -53,7 +53,7 @@ class Sliders(models.Model):
 class Tools(models.Model):
     name = models.CharField(max_length = 100)
     vendor_code = models.CharField(max_length = 15)
-    price = models.CharField(max_length = 10)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     wholesale_var = models.CharField(max_length = 3)
     media_path = models.ImageField(upload_to = 'ToolImg/' ,max_length = 200)
     amount = models.CharField(max_length = 5)
