@@ -4,6 +4,7 @@ import { ToolService } from '../../services/tool.service';
 import { Router, RoutesRecognized } from '@angular/router';
 import { CartService } from 'src/services/cart.service';
 import { Cookies } from '@cedx/ngx-cookies';
+import { SearchService } from 'src/services/search.service';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,8 @@ export class HeaderComponent implements OnInit {
     private toolService: ToolService,
     private router: Router,
     private cartService: CartService,
-    private _cookies: Cookies) {
+    private _cookies: Cookies,
+    private searchService: SearchService) {
       this.router.events.subscribe(event => {
         if(event instanceof RoutesRecognized) {
           this.show = false;
@@ -54,6 +56,7 @@ export class HeaderComponent implements OnInit {
 
   onSubmit() {
     console.log(this.searchForm.value.searchvalue);
+    this.searchService.ititiateSearch(this.searchForm.value.searchvalue);
   }
 
   toggle() {

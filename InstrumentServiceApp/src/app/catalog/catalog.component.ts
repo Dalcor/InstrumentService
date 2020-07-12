@@ -33,7 +33,7 @@ export class CatalogComponent implements OnInit {
     this.toolService.getTools().subscribe(data => {
       this.catalogItems = data;
       this.selectedItem = this.catalogItems[0].id;
-      this.selectedItemName = this.catalogItems[0].name;
+      this.selectedItemName = this.catalogItems[0].name_link;
     });
 
     this.toolService.getToolDetails().subscribe(data => {
