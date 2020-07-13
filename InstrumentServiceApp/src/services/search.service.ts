@@ -11,7 +11,7 @@ export class SearchService {
 
 
   ititiateSearch(searchRequest) {
-    this.http.get( baseApiURL + "/search", searchRequest);
+    return this.http.get( baseApiURL + "/search?=" + searchRequest);
   }
 
 }

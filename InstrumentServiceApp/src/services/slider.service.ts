@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,9 @@ export class SliderService {
 
   getSliderImages() {
     return this.SLIDERIMAGES;
+  }
+
+  setTemplate(value: boolean): Observable<boolean> {
+    return of(value);
   }
 }
