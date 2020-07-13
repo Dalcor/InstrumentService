@@ -4,6 +4,8 @@ import { baseURL } from '../../shared/baseurl';
 import { Params, ActivatedRoute} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { CartService } from 'src/services/cart.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-detail',
@@ -24,7 +26,8 @@ export class DetailComponent implements OnInit {
 
   constructor(private toolService: ToolService,
     private activateRoute: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -33,6 +36,9 @@ export class DetailComponent implements OnInit {
     this.activateRoute.params.pipe(switchMap((params: Params) => {return this.toolService.getCategoryTools(params['tool'],params['detail'])}))
     .subscribe(items => {
       this.categoryTools = items;
+    },
+    error => {
+      this.router.navigate(['/404']);
     });
   }
 

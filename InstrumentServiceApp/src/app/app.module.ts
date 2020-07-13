@@ -44,6 +44,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { PricePipe } from '../pipes/price.pipe';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { ToolsResolver } from 'src/services/tools-resolver.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     FilterPipe,
     CheckoutComponent,
     PricePipe,
-    AboutusComponent
+    AboutusComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +85,8 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     SliderService,
     ToolService,
     CookieService,
-    CartService
+    CartService,
+    ToolsResolver
   ],
   bootstrap: [AppComponent]
 })

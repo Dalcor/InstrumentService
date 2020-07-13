@@ -6,7 +6,7 @@
             </li>
             <li><img src="../../assets/images/arrow-bread.svg" alt=""></li>
             <li *ngIf="categoryTools">
-                <a class="current-bread" [routerLink]="['/' + categoryTools.InstrumentCatalog[0].name , categoryTools.InstrumentCatalogDetail[0].name ]">{{ categoryTools.InstrumentCatalogDetail[0].name }}</a>
+                <a class="current-bread" [routerLink]="['/' + categoryTools.InstrumentCatalog[0].name_link + 'e' , categoryTools.InstrumentCatalogDetail[0].name_link ]">{{ categoryTools.InstrumentCatalogDetail[0].name }}</a>
             </li>
         </ul>
     </div>

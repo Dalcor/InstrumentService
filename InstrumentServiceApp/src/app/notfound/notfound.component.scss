@@ -1,0 +1,103 @@
+.background {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    z-index: -999;
+    overflow: hidden;
+    background-color: #fff;
+    .line-handler-block {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        .line-handler {
+            position: absolute;
+            display: flex;
+            top: -100px;
+            left: -100px;
+            .line {
+                width: 174px;
+                height: 1000px;
+                transform: rotate(-23deg);
+                -webkit-transform: rotate(-23deg);
+                -moz-transform: rotate(-23deg);
+                -ms-transform: rotate(-23deg);
+                -o-transform: rotate(-23deg);
+                background-color: #FEDE3B;
+                margin-right: 110px;
+            }
+        }
+    }
+}
+
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    .sign404 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 360px;
+        line-height: 252px;
+        letter-spacing: 12.8571px;   
+        margin: 0;
+        display: flex; 
+        div {
+            width: 252px;
+            height: 252px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    p {
+        text-align: center;
+        margin: 0;
+    }
+    .error-sign {
+        font-weight: bold;
+        font-size: 70px;
+        line-height: 83px;        
+        letter-spacing: 2.5px;
+        margin-top: 20px;
+    }
+    .apol-sign {
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 30px;
+        letter-spacing: 0.892857px;
+        margin-bottom: 50px;
+    }
+    .main-link {
+        button {
+            width: 269px;
+            height: 43px;
+            background-color: #000;
+            color: #fff;
+            outline: none;
+            border: none;
+            font-weight: bold;
+            font-size: 17px;
+            line-height: 20px;
+            letter-spacing: 0.607143px;
+        }
+    }
+}
+
+.wrapper-404 {
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left: 0;
+    overflow: hidden;
+}
+

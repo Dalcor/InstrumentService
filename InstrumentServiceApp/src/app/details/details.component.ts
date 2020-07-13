@@ -3,11 +3,12 @@ import { Tool } from 'src/shared/tool';
 import { ToolService } from 'src/services/tool.service';
 import { baseURL } from '../../shared/baseurl';
 import { Params, ActivatedRoute} from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, of } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
 import { FilterPipe } from '../../pipes/filter.pipe';
 import { CartService } from 'src/services/cart.service';
 import { Options } from 'ng5-slider';
+import { Router, Resolve } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -39,18 +40,31 @@ export class DetailsComponent implements OnInit {
 
   constructor(private toolService: ToolService,
     private activateRoute: ActivatedRoute,
-    private cartService: CartService) {
-
+    private cartService: CartService,
+    private router: Router) {
      }
   id: number;
   p: number = 1;
 
   ngOnInit(): void {
-    this.activateRoute.params.pipe(switchMap((params: Params) => {return this.toolService.getCategoryTools(params['tool'],params['detail'])}))
-    .subscribe(items => {
-      this.categoryTools = items;
-      this.filterItems = Object.values(this.categoryTools.Companys);
+    console.log("23");
+    this.activateRoute.data.subscribe(
+      data => {
+        this.categoryTools = data['tools'];
+        this.filterItems = Object.values(this.categoryTools.Companys);
     });
+    
+    // this.activateRoute.params.pipe(switchMap((params: Params) => {
+    //   return this.toolService.getCategoryTools(params['tool'],params['detail'])}
+    //   ))
+    // .subscribe(
+    //   data => {
+    //   this.categoryTools = data;
+      
+    //   },
+    //   error => {
+    //     this.router.navigate(['/404']);
+    //   });
   }
 
   removeOne(ev) {
